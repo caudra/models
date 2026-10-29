@@ -1,0 +1,15 @@
+Caudra models
+Copyright 2026 Thorsten Born
+
+This product includes data from models.dev.
+
+The files below contain data derived from the models.dev catalog:
+
+  import/models-dev.json      a snapshot of https://models.dev/api.json taken on 2026-10-29
+  dist/v1/models.json         the "catalog" section, built from import/models-dev.json
+
+Source: https://github.com/anomalyco/models.dev (formerly github.com/sst/models.dev)
+License: MIT License
+Copyright (c) 2025 models.dev
+
+The full text of the models.dev license is in import/LICENSE.models-dev.

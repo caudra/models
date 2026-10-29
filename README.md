@@ -104,3 +104,10 @@ To rotate the key:
 | `dist/v1/models.json` | The built snapshot |
 | `dist/v1/schema.json` | The snapshot's JSON schema |
 | `.github/workflows/` | `check` runs `make check` on pull requests and on `main`. `publish` signs and uploads |
+
+## License
+
+This repository is licensed under the Apache License 2.0. See `LICENSE`.
+
+The models.dev data in `import/models-dev.json` and in the `catalog` section of
+`dist/v1/models.json` keeps its upstream MIT license. See `NOTICE`.

@@ -25,13 +25,14 @@ Run `make help` to list every target.
 
 ## Change a model
 
-1. Edit `providers/<slug>.json`. The `$schema` line gives editors completion and validation.
-2. Run `make build` to regenerate `dist/` and `schema/`.
-3. Run `make check`.
-4. Commit the provider file and the regenerated files, and open a pull request.
+1. Confirm the change on the provider's own page. The `model-updates` skill lists the sources and apply rules.
+2. Edit `providers/<slug>.json` with a `source` URL and a `note` for non-obvious choices. The `$schema` line gives editors completion and validation.
+3. Run `make build` to regenerate `dist/` and `schema/`.
+4. Run `make check` and `make test`.
+5. Commit the provider file and the regenerated files, and open a pull request.
 
 `make check` fails when `dist/` or `schema/` does not match the sources, so a pull request that
-skips step 2 fails CI.
+skips step 3 fails CI.
 
 ## Refresh the models.dev import
 
@@ -39,6 +40,80 @@ skips step 2 fails CI.
 	`import/models-dev.json`, and runs `make build`.
 2. Review `git diff import/` before you commit. Every row in the import reaches Caudra's model
 	catalog.
+
+## Audit the model data
+
+Run `make audit SINCE=2026-10-01`. It downloads models.dev into `.tools/` and writes
+`reports/<UTC date>.md`. Reports are gitignored. `OUT=<path>` chooses another output file.
+
+To compare against a saved catalog without network access:
+
+```sh
+make audit MODELS_DEV=/path/to/models-dev.json SINCE=2026-10-01
+```
+
+`make import MODELS_DEV=<path>` also skips the download. The underlying command is
+`caudra-models audit <data-dir> [--models-dev <file>] [--since DATE] [--out <file>]`.
+Without `--models-dev`, it uses the reviewed `import/models-dev.json`. Without `--since`, it
+separates new models from older ones at 90 days ago. Without `--out`, it prints to stdout.
+The tool never accesses the network.
+
+The report compares prices, reachable long-prompt tiers, input budgets or total context windows,
+output limits, deprecations, and scheduled retirements. It also finds missing and unlisted models,
+including versions that an older prefix would otherwise swallow. Decision models appear with
+their source pages for manual review because models.dev does not list them.
+
+Confirm findings on the provider's own page before editing data. `audit/accepted.json` keeps
+deliberate differences in `accepted` and working-window or fallback limits in `caps`. Each row
+needs a reason. `make check`, `make build`, and the audit validate this file. They reject unknown
+values of `field`, unknown providers, invalid model references, duplicate rows, empty
+reasons, and caps that no entry holds. Other unknown JSON keys remain forward-compatible.
+The skill describes each row's fields. A changed catalog value reports again, and the old
+acceptance appears as stale.
+
+## Run model-watch
+
+The project automation owns the daily workflow. It syncs `origin/main`, runs `make import` and
+`make audit`, checks the provider pages in the skill, and commits confirmed changes per provider.
+It runs `make check` and `make test`, then pushes `model-watch/<UTC run date>` and opens or updates
+a PR with the report as its body. It never pushes main, force-pushes, or merges a PR.
+
+1. Use a dedicated clean checkout of this data repository. Its origin must be `github.com/caudra/models`.
+2. Install the pinned maintainer tool with `make tool`. Until the revision in `caudra.toml` is published, use `make tool CAUDRA_SRC=<models-file checkout>`.
+3. Install `gh` and authenticate an account allowed to push branches and open PRs in this repository.
+4. Enable experimental automations. Set `automations = true` under `[experimental]` in your global Caudra config.
+5. Start Caudra in that checkout with `caudra --autopilot` in Build mode. Review and trust `.caudra/automations/model-watch.rhai` in `/automations`.
+6. Arm it with `/automations arm model-watch {"first_since":"2026-10-01"}`. Choose your first survey date.
+
+Keep the session open. The schedule checks every 30 minutes and starts once a day from 07:00 UTC.
+Manual arming starts immediately. `start_hour`, `continuation_limit`, and `step_notice_hours`
+adjust the start hour, goal continuation limit, and stuck-step notice interval. A failed step
+halts until you resolve the problem and arm the script again. Editing the script requires
+renewed trust. `/automations disarm model-watch` stops it.
+
+The landing reply ends with `MODEL-WATCH LAND: PR <url>`, `MODEL-WATCH LAND: NOTHING`, or
+`MODEL-WATCH LAND: FAILED`. A successful run advances the next survey's start date. Findings
+that need a person stay in the report rather than holding a goal open indefinitely.
+
+### Replay cases
+
+`make test` runs the pinned tool's
+`caudra-models replay .caudra/automations/model-watch.rhai tests/model-watch.json` command.
+It validates the script, smoke-runs its triggers, and checks every recorded firing without
+performing its actions. It does not call Git, `gh`, a model, or the network.
+
+The JSON file is an array of cases. Each has a `name`, `event`, initial `state`, `args`, and
+fixed `now_ms`. `event` uses Caudra's serialized automation event shape, including `$untrusted`
+tags on external text. `expected` holds the exact `end`, ordered journal `actions`, and final
+`state`. Messages are compared in full. HTTP calls have stubbed responses, Git comparisons return
+no repository, and topic filters match literal names in this runner.
+
+The cases preserve the old Rust tests' daily sequencing, scheduling, stalled-goal notices,
+failure recovery, and landing correlation. PR success replaces local-main fast-forward success.
+Local-main busy and stale handling no longer applies. PR failure and invalid-marker cases replace
+those paths. The `gh_disabled_halts` case checks a failed landing response without invoking `gh`.
+When changing a prompt or transition, review and update the affected expectations, then run
+`make test`. CI runs these offline tests, but it does not download or audit models.dev.
 
 ## Format rules for v1
 
@@ -110,7 +185,8 @@ To rotate the key:
 | `make check` | Validates the data and fails if `dist/` or `schema/` is stale |
 | `make build` | Writes `dist/` and `schema/`. `NOW=` sets the time for a changed snapshot |
 | `make import` | Downloads models.dev, rewrites `import/models-dev.json`, and builds |
-| `make audit` | Placeholder. The audit moves here in a later change |
+| `make audit` | Downloads models.dev and writes `reports/<UTC date>.md`. `MODELS_DEV=`, `SINCE=`, and `OUT=` override its inputs and output |
+| `make test` | Validates and replays model-watch without external actions |
 | `make hooks` | Installs a pre-commit hook that runs `make check` |
 
 ### Layout
@@ -122,10 +198,15 @@ To rotate the key:
 | `providers/<slug>.json` | One provider. `models_from` copies another provider's models, generations, price periods, and availability |
 | `decision-models.json` | The models behind decision endpoints |
 | `import/models-dev.json` | The reviewed models.dev import |
+| `audit/accepted.json` | Accepted catalog differences and deliberate caps, each with a reason |
+| `.caudra/skills/model-updates/SKILL.md` | Provider sources, survey instructions, and apply rules |
+| `.caudra/automations/model-watch.rhai` | The daily survey, update, and PR workflow |
+| `tests/model-watch.json` | Fixed automation events with expected outcomes, actions, and state |
+| `reports/` | Ignored audit and survey reports |
 | `schema/*.v1.json` | Generated JSON schemas for the authoring files and the snapshot |
 | `dist/v1/models.json` | The built snapshot |
 | `dist/v1/schema.json` | The snapshot's JSON schema |
-| `.github/workflows/` | `check` runs `make check` on pull requests and on `main`. `publish` signs and uploads |
+| `.github/workflows/` | `check` runs `make check` and `make test` on pull requests and on `main`. `publish` signs and uploads |
 
 ## License
 

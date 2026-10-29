@@ -1,0 +1,477 @@
+{
+  "accepted": [
+    {
+      "provider": "google",
+      "model": "gemini-2.5-computer-use-preview-10-2025",
+      "field": "unlisted",
+      "catalog": "2025-10-07",
+      "reason": "Retired July 28, 2026 per https://ai.google.dev/gemini-api/docs/deprecations. Keep the shutdown selector out of the table."
+    },
+    {
+      "provider": "google",
+      "model": "deep-research-max-preview-04-2026",
+      "field": "unlisted",
+      "catalog": "2026-04-21",
+      "reason": "A Deep Research managed agent, not a chat model, per https://ai.google.dev/gemini-api/docs/deprecations."
+    },
+    {
+      "provider": "google",
+      "model": "deep-research-preview-04-2026",
+      "field": "unlisted",
+      "catalog": "2026-04-21",
+      "reason": "A Deep Research managed agent, not a chat model, per https://ai.google.dev/gemini-api/docs/deprecations."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.5-flash",
+      "field": "unlisted",
+      "catalog": "2025-06-17",
+      "reason": "Google limits the 2.5 models to past users and sends new projects to 3.8 Flash or 3.5 Flash-Lite (2026-09-18, https://ai.google.dev/gemini-api/docs/changelog)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.5-flash-lite",
+      "field": "unlisted",
+      "catalog": "2025-06-17",
+      "reason": "Google limits the 2.5 models to past users and sends new projects to 3.8 Flash or 3.5 Flash-Lite (2026-09-18, https://ai.google.dev/gemini-api/docs/changelog)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-2.5-pro",
+      "field": "unlisted",
+      "catalog": "2025-06-17",
+      "reason": "Google limits the 2.5 models to past users and sends new projects to 3.8 Flash or 3.5 Flash-Lite (2026-09-18, https://ai.google.dev/gemini-api/docs/changelog)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3-flash-preview",
+      "field": "unlisted",
+      "catalog": "2025-12-17",
+      "reason": "A preview Google replaces with gemini-3.6-flash, which the table lists (https://ai.google.dev/gemini-api/docs/deprecations)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3.1-flash-lite",
+      "field": "unlisted",
+      "catalog": "2026-05-07",
+      "reason": "Shuts down May 7, 2027; Google names gemini-3.5-flash-lite, which the table lists, as its replacement (https://ai.google.dev/gemini-api/docs/deprecations)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3.1-flash-lite-image",
+      "field": "unlisted",
+      "catalog": "2026-06-30",
+      "reason": "Nano Banana 2 Lite, an image generation model (https://ai.google.dev/gemini-api/docs/models)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3.1-flash-live-preview",
+      "field": "unlisted",
+      "catalog": "2026-03-26",
+      "reason": "A Live audio preview that shuts down Nov 17, 2026 (https://ai.google.dev/gemini-api/docs/deprecations)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3.1-pro-preview",
+      "field": "unlisted",
+      "catalog": "2026-02-19",
+      "reason": "A preview overtaken by stable gemini-4-argon, which costs less and which Google calls its most capable model (https://ai.google.dev/gemini-api/docs/pricing)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3.1-pro-preview-customtools",
+      "field": "unlisted",
+      "catalog": "2026-02-19",
+      "reason": "A preview overtaken by stable gemini-4-argon, which costs less and which Google calls its most capable model (https://ai.google.dev/gemini-api/docs/pricing)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3.5-flash",
+      "field": "unlisted",
+      "catalog": "2026-05-19",
+      "reason": "Deprecated 2026-10-08; the API serves its requests with gemini-3.6-flash, which the table lists (https://ai.google.dev/gemini-api/docs/deprecations)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-3.7-flash",
+      "field": "unlisted",
+      "catalog": "2026-08-13",
+      "reason": "Deprecated 2026-10-08; the API serves its requests with gemini-3.8-flash, which the table lists (https://ai.google.dev/gemini-api/docs/deprecations)."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-flash-latest",
+      "field": "unlisted",
+      "catalog": "2026-08-13",
+      "reason": "A floating alias Google hot-swaps with each release (https://ai.google.dev/gemini-api/docs/models); the table lists the models themselves."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-flash-lite-latest",
+      "field": "unlisted",
+      "catalog": "2026-07-21",
+      "reason": "A floating alias Google hot-swaps with each release (https://ai.google.dev/gemini-api/docs/models); the table lists the models themselves."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-pro-latest",
+      "field": "unlisted",
+      "catalog": "2026-02-19",
+      "reason": "A floating alias Google hot-swaps with each release (https://ai.google.dev/gemini-api/docs/models); the table lists the models themselves."
+    },
+    {
+      "provider": "google",
+      "model": "gemma-4-26b-a4b-it",
+      "field": "unlisted",
+      "catalog": "2026-04-02",
+      "reason": "An open-weight Gemma model the Gemini API also serves (2026-04-02, https://ai.google.dev/gemini-api/docs/changelog); the table lists Gemini models."
+    },
+    {
+      "provider": "google",
+      "model": "gemma-4-31b-it",
+      "field": "unlisted",
+      "catalog": "2026-04-02",
+      "reason": "An open-weight Gemma model the Gemini API also serves (2026-04-02, https://ai.google.dev/gemini-api/docs/changelog); the table lists Gemini models."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4o",
+      "field": "unlisted",
+      "catalog": "2024-05-13",
+      "reason": "GPT-4o snapshots shut down Jan 14, 2027, replaced by gpt-6-luna, which the table lists (https://developers.openai.com/api/docs/deprecations)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4o-2024-08-06",
+      "field": "unlisted",
+      "catalog": "2024-08-06",
+      "reason": "GPT-4o snapshots shut down Jan 14, 2027, replaced by gpt-6-luna, which the table lists (https://developers.openai.com/api/docs/deprecations)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4o-2024-11-20",
+      "field": "unlisted",
+      "catalog": "2024-11-20",
+      "reason": "GPT-4o snapshots shut down Jan 14, 2027, replaced by gpt-6-luna, which the table lists (https://developers.openai.com/api/docs/deprecations)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "field": "unlisted",
+      "catalog": "2024-07-18",
+      "reason": "GPT-4o snapshots shut down Jan 14, 2027, replaced by gpt-6-luna, which the table lists (https://developers.openai.com/api/docs/deprecations)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5",
+      "field": "unlisted",
+      "catalog": "2025-08-07",
+      "reason": "Deprecated, shuts down Dec 11, 2026, replaced by the gpt-5.6 models the table lists (https://developers.openai.com/api/docs/deprecations)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5-mini",
+      "field": "unlisted",
+      "catalog": "2025-08-07",
+      "reason": "Deprecated, shuts down Dec 11, 2026, replaced by the gpt-5.6 models the table lists (https://developers.openai.com/api/docs/deprecations)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5-nano",
+      "field": "unlisted",
+      "catalog": "2025-08-07",
+      "reason": "Deprecated, shuts down Dec 11, 2026, replaced by the gpt-5.6 models the table lists (https://developers.openai.com/api/docs/deprecations)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5-pro",
+      "field": "unlisted",
+      "catalog": "2025-10-06",
+      "reason": "Deprecated, shuts down Dec 11, 2026, replaced by the gpt-5.6 models the table lists (https://developers.openai.com/api/docs/deprecations)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.1",
+      "field": "unlisted",
+      "catalog": "2025-11-13",
+      "reason": "Deprecated, shuts down Apr 1, 2027, replaced by gpt-6-sol, which the table lists (https://developers.openai.com/api/docs/deprecations)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-5.3-codex-spark",
+      "field": "unlisted",
+      "catalog": "2026-02-05",
+      "reason": "A Codex research preview for ChatGPT Pro, absent from https://developers.openai.com/api/docs/models and the API pricing page."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-daybreak-blue-latest",
+      "field": "unlisted",
+      "catalog": "2026-08-07",
+      "reason": "A deprecated cyber alias of gpt-5.6-sol, which the table lists (https://developers.openai.com/api/docs/models/gpt-daybreak-blue-latest)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-daybreak-red-latest",
+      "field": "unlisted",
+      "catalog": "2026-08-07",
+      "reason": "A deprecated alias of gpt-5.6-cyber, a model for authorized security research (https://developers.openai.com/api/docs/models/gpt-daybreak-red-latest)."
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-realtime-2.1",
+      "field": "unlisted",
+      "catalog": "2026-07-06",
+      "reason": "A speech-to-speech model served only on the Realtime endpoint (https://developers.openai.com/api/docs/models/gpt-realtime-2.1)."
+    },
+    {
+      "provider": "xai",
+      "model": "grok-4.20-0309-non-reasoning",
+      "field": "unlisted",
+      "catalog": "2026-03-09",
+      "reason": "Superseded by grok-4.3 at the same price and window; xAI sends code to Grok 4.7 (https://docs.x.ai/developers/models)."
+    },
+    {
+      "provider": "xai",
+      "model": "grok-4.20-0309-reasoning",
+      "field": "unlisted",
+      "catalog": "2026-03-09",
+      "reason": "Superseded by grok-4.3 at the same price and window; xAI sends code to Grok 4.7 (https://docs.x.ai/developers/models)."
+    },
+    {
+      "provider": "xai",
+      "model": "grok-build-0.1",
+      "field": "unlisted",
+      "catalog": "2026-04-16",
+      "reason": "xAI says \"for everything else, including code, use Grok 4.7\", which the table lists (https://docs.x.ai/developers/models)."
+    },
+    {
+      "provider": "mistral",
+      "model": "codestral-2508",
+      "field": "unlisted",
+      "catalog": "2025-07-30",
+      "reason": "A code-completion (FIM) model; Mistral sends coding agents to Medium 3.5, which the table lists (https://docs.mistral.ai/models/codestral-25-08)."
+    },
+    {
+      "provider": "mistral",
+      "model": "codestral-latest",
+      "field": "unlisted",
+      "catalog": "2024-05-29",
+      "reason": "A code-completion (FIM) model; Mistral sends coding agents to Medium 3.5, which the table lists (https://docs.mistral.ai/models/codestral-25-08)."
+    },
+    {
+      "provider": "mistral",
+      "model": "ministral-3b-2512",
+      "field": "unlisted",
+      "catalog": "2025-12-02",
+      "reason": "A small edge model; Ministral 3 14B, which the table lists, covers the family (https://docs.mistral.ai/getting-started/models/models_overview/)."
+    },
+    {
+      "provider": "mistral",
+      "model": "ministral-3b-latest",
+      "field": "unlisted",
+      "catalog": "2024-10-01",
+      "reason": "A small edge model; Ministral 3 14B, which the table lists, covers the family (https://docs.mistral.ai/getting-started/models/models_overview/)."
+    },
+    {
+      "provider": "mistral",
+      "model": "ministral-8b-2512",
+      "field": "unlisted",
+      "catalog": "2025-12-02",
+      "reason": "A small edge model; Ministral 3 14B, which the table lists, covers the family (https://docs.mistral.ai/getting-started/models/models_overview/)."
+    },
+    {
+      "provider": "mistral",
+      "model": "ministral-8b-latest",
+      "field": "unlisted",
+      "catalog": "2024-10-01",
+      "reason": "A small edge model; Ministral 3 14B, which the table lists, covers the family (https://docs.mistral.ai/getting-started/models/models_overview/)."
+    },
+    {
+      "provider": "mistral",
+      "model": "voxtral-small-2507",
+      "field": "unlisted",
+      "catalog": "2025-07-15",
+      "reason": "An audio-input model with a 32k window (https://docs.mistral.ai/models/voxtral-small-25-07)."
+    },
+    {
+      "provider": "mistral",
+      "model": "voxtral-small-latest",
+      "field": "unlisted",
+      "catalog": "2025-07-15",
+      "reason": "An audio-input model with a 32k window (https://docs.mistral.ai/models/voxtral-small-25-07)."
+    },
+    {
+      "provider": "zai",
+      "model": "glm-5-turbo",
+      "field": "unlisted",
+      "catalog": "2026-03-16",
+      "reason": "No longer on Z.AI's pricing page or chat API model list (https://docs.z.ai/guides/overview/pricing)."
+    },
+    {
+      "provider": "zai",
+      "model": "glm-5v-turbo",
+      "field": "unlisted",
+      "catalog": "2026-04-01",
+      "reason": "No longer on Z.AI's pricing page or chat API model list (https://docs.z.ai/guides/overview/pricing)."
+    },
+    {
+      "provider": "zai",
+      "model": "glm-4.5v",
+      "field": "unlisted",
+      "catalog": "2025-08-11",
+      "reason": "Zhipu lists no function calling for it (https://docs.bigmodel.cn/cn/guide/models/vlm/glm-4.5v), so it cannot drive tools."
+    },
+    {
+      "provider": "xai",
+      "model": "grok-4.3",
+      "field": "max_output",
+      "catalog": "30000",
+      "reason": "xAI documents no output limit for Grok 4.3 (https://docs.x.ai/developers/models/grok-4.3), so the table asks for at most 131,072."
+    },
+    {
+      "provider": "mistral",
+      "model": "mistral-large-4",
+      "field": "context",
+      "catalog": "1048576",
+      "reason": "Mistral's model pages say \"1M\" (https://docs.mistral.ai/models.md), and `/v1/models` reports the exact window at runtime."
+    },
+    {
+      "provider": "mistral",
+      "model": "zai-glm-5-3-flash",
+      "field": "context",
+      "catalog": "1048576",
+      "reason": "Mistral's model pages say \"1M\" (https://docs.mistral.ai/models.md), and `/v1/models` reports the exact window at runtime."
+    },
+    {
+      "provider": "mistral",
+      "model": "zai-glm-5-3",
+      "field": "context",
+      "catalog": "1048576",
+      "reason": "Mistral's model pages say \"1M\" (https://docs.mistral.ai/models.md), and `/v1/models` reports the exact window at runtime."
+    },
+    {
+      "provider": "mistral",
+      "model": "glm-5-2",
+      "field": "context",
+      "catalog": "1048576",
+      "reason": "Mistral's model pages say \"1M\" (https://docs.mistral.ai/models.md), and `/v1/models` reports the exact window at runtime."
+    },
+    {
+      "provider": "mistral",
+      "model": "deepseek-v4-1-flash-1017",
+      "field": "context",
+      "catalog": "1048576",
+      "reason": "Mistral's model pages say \"1M\" (https://docs.mistral.ai/models.md), and `/v1/models` reports the exact window at runtime."
+    },
+    {
+      "provider": "zai",
+      "model": "glm-5",
+      "field": "context",
+      "catalog": "204800",
+      "reason": "Z.AI's model pages say 200K and count K as 1,000 (https://docs.z.ai/guides/llm/glm-5)."
+    },
+    {
+      "provider": "zai",
+      "model": "glm-4.7",
+      "field": "context",
+      "catalog": "204800",
+      "reason": "Z.AI's model pages say 200K and count K as 1,000 (https://docs.z.ai/guides/llm/glm-5)."
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "field": "context",
+      "catalog": "1048576",
+      "reason": "DeepSeek's pricing page says 1M (https://api-docs.deepseek.com/quick_start/pricing)."
+    },
+    {
+      "provider": "deepseek",
+      "model": "deepseek-v4-pro",
+      "field": "context",
+      "catalog": "1048576",
+      "reason": "DeepSeek's pricing page says 1M (https://api-docs.deepseek.com/quick_start/pricing)."
+    },
+    {
+      "provider": "copilot",
+      "model": "gemini-3.8-flash",
+      "field": "max_output",
+      "catalog": "64000",
+      "reason": "GitHub publishes no output limit (https://docs.github.com/en/copilot/reference/ai-models/supported-models); Copilot's `/models` replaces it at runtime."
+    },
+    {
+      "provider": "copilot",
+      "model": "claude-sonnet-4.6",
+      "field": "max_output",
+      "catalog": "32000",
+      "reason": "GitHub publishes no output limit (https://docs.github.com/en/copilot/reference/ai-models/supported-models); Copilot's `/models` replaces it at runtime."
+    },
+    {
+      "provider": "google",
+      "model": "gemini-4-argon",
+      "field": "max_output",
+      "catalog": "32768",
+      "reason": "Google's model page (ai.google.dev/gemini-api/docs/models) gives Gemini 4 Argon 65,536 output tokens."
+    },
+    {
+      "provider": "xai",
+      "model": "grok-4.7",
+      "field": "tiers",
+      "catalog": "above 200000: 4 / 12 / 1 / 0",
+      "reason": "xAI bills a prompt of 200,000 tokens or more at the long-context rate (docs.x.ai/developers/models), and a tier's `above` is exclusive, so the table's sits at 199,999."
+    },
+    {
+      "provider": "xai",
+      "model": "grok-4.6",
+      "field": "tiers",
+      "catalog": "above 200000: 4 / 12 / 1 / 0",
+      "reason": "xAI bills a prompt of 200,000 tokens or more at the long-context rate (docs.x.ai/developers/models), and a tier's `above` is exclusive, so the table's sits at 199,999."
+    },
+    {
+      "provider": "xai",
+      "model": "grok-4.5",
+      "field": "tiers",
+      "catalog": "above 200000: 4 / 12 / 0.6 / 0",
+      "reason": "xAI bills a prompt of 200,000 tokens or more at the long-context rate (docs.x.ai/developers/models), and a tier's `above` is exclusive, so the table's sits at 199,999."
+    },
+    {
+      "provider": "xai",
+      "model": "grok-4.3",
+      "field": "tiers",
+      "catalog": "above 200000: 2.5 / 5 / 0.4 / 0",
+      "reason": "xAI bills a prompt of 200,000 tokens or more at the long-context rate (docs.x.ai/developers/models), and a tier's `above` is exclusive, so the table's sits at 199,999."
+    }
+  ],
+  "caps": [
+    {
+      "provider": "anthropic",
+      "field": "context",
+      "ours": 372000,
+      "reason": "The working window of the 1M-token models, capped to bound cost and latency. A `-1m` id opens the full window."
+    },
+    {
+      "provider": "openai",
+      "field": "context",
+      "ours": 372000,
+      "reason": "The working window of gpt-5.6 and gpt-6, below what the API accepts, because caudra fills it before compacting."
+    },
+    {
+      "provider": "copilot",
+      "field": "context",
+      "ours": 200000,
+      "reason": "A cold-start fallback: Copilot's `/models` reports each model's prompt limit, which replaces it."
+    },
+    {
+      "provider": "copilot",
+      "field": "max_output",
+      "ours": 100000,
+      "reason": "A cold-start fallback: Copilot's `/models` reports each model's output limit, which replaces it."
+    },
+    {
+      "provider": "xai",
+      "field": "max_output",
+      "ours": 131072,
+      "reason": "xAI documents no text output limit for Grok 4.5 and later (docs.x.ai/developers/grok-4-7), so the table asks for at most this many."
+    }
+  ]
+}

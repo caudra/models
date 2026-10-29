@@ -1,4 +1,5 @@
 /.tools/
 /target/
+/reports/
 *.sig
 *.pkcs8

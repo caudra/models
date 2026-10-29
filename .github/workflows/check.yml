@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
+          fetch-depth: 0
       - id: tools
         uses: actions/cache@v6.1.0
         with:
@@ -23,4 +24,6 @@ jobs:
       - if: steps.tools.outputs.cache-hit != 'true'
         run: make tool
       - run: make check
+        env:
+          PUBLISHED_REF: ${{ github.event_name == 'push' && github.event.before || 'origin/main' }}
       - run: make test

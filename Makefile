@@ -9,6 +9,8 @@ PIN := caudra.toml
 MODELS_DEV_URL := https://models.dev/api.json
 MODELS_DEV_JSON ?= $(TOOLS_DIR)/models-dev.json
 MODELS_DEV ?=
+PUBLISHED_REF ?= origin/main
+PUBLISHED := $(TOOLS_DIR)/published.json
 AUDIT_DATE := $(shell date -u +%F)
 OUT ?= reports/$(AUDIT_DATE).md
 CATALOG = $(if $(MODELS_DEV),$(MODELS_DEV),$(MODELS_DEV_JSON))
@@ -18,7 +20,7 @@ pin = $(shell $(PYTHON) -c 'import sys, tomllib; value = tomllib.load(open("$(PI
 INSTALL = install --locked --root $(abspath $(TOOLS_DIR)) --features $(call pin,features)
 BUILD = $(TOOL) build . $(if $(NOW),--now $(NOW))
 
-.PHONY: help tool require-tool check build catalog import audit test hooks
+.PHONY: help tool require-tool published check build catalog import audit test hooks
 
 help: ## List the targets
 	@awk -F ':.*## ' '/^[a-z-]+:.*## /{printf "  %-8s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -36,8 +38,15 @@ endif
 require-tool:
 	@command -v $(TOOL) >/dev/null || { echo "$(TOOL) not found: run make tool first" >&2; exit 1; }
 
-check: require-tool ## Validate the data and fail if dist/ or schema/ is stale
-	$(TOOL) validate .
+published:
+	mkdir -p "$(TOOLS_DIR)"
+	ref='$(PUBLISHED_REF)'; [[ $$ref =~ ^0+$$ ]] && ref=HEAD; \
+	git show "$$ref:dist/v1/models.json" > "$(PUBLISHED).tmp" || { \
+		echo "No dist/v1/models.json at $$ref. Run git fetch origin main, or set PUBLISHED_REF=<commit>." >&2; exit 1; }
+	mv "$(PUBLISHED).tmp" "$(PUBLISHED)"
+
+check: require-tool published ## Validate the data, compare it with the published file at PUBLISHED_REF (origin/main), and fail if dist/ or schema/ is stale
+	$(TOOL) validate . --published "$(PUBLISHED)"
 
 build: require-tool ## Write dist/ and schema/ (NOW=<RFC 3339> stamps a changed snapshot)
 	$(BUILD)
@@ -55,8 +64,8 @@ import: require-tool catalog ## Refresh the reviewed catalog and build (MODELS_D
 	$(TOOL) import-models-dev "$(CATALOG)" .
 	$(BUILD)
 
-audit: require-tool catalog ## Audit models.dev into reports/<date>.md (MODELS_DEV=<file>, SINCE=<date>, OUT=<file>)
-	$(TOOL) audit . --models-dev "$(CATALOG)" $(if $(SINCE),--since "$(SINCE)") --out "$(OUT)"
+audit: require-tool catalog published ## Audit models.dev into reports/<date>.md (MODELS_DEV=<file>, SINCE=<date>, OUT=<file>)
+	$(TOOL) audit . --models-dev "$(CATALOG)" --published "$(PUBLISHED)" $(if $(SINCE),--since "$(SINCE)") --out "$(OUT)"
 
 test: require-tool ## Replay the model-watch cases without network or external actions
 	$(TOOL) replay .caudra/automations/model-watch.rhai tests/model-watch.json

@@ -1,0 +1,42 @@
+version = 2
+
+# model-watch runs on autopilot and reads untrusted provider pages. Its only
+# push is the run branch. Branch protection on main and a token without merge
+# or bypass rights remain the real guard; these rules stop the obvious forms
+# before they reach GitHub.
+[shell]
+allow = ["git push --set-upstream origin HEAD:refs/heads/model-watch/*"]
+ask = ["git push *"]
+deny = [
+    "git push",
+    "git push origin",
+    "git push origin main *",
+    "git push origin HEAD:main *",
+    "git push origin HEAD:refs/heads/main *",
+    "git push origin refs/heads/main *",
+    "git push -u origin main *",
+    "git push -u origin HEAD:main *",
+    "git push -u origin HEAD:refs/heads/main *",
+    "git push --set-upstream origin main *",
+    "git push --set-upstream origin HEAD:main *",
+    "git push --set-upstream origin HEAD:refs/heads/main *",
+    "git push origin +HEAD:* *",
+    "git push origin :* *",
+    "git push --force *",
+    "git push -f *",
+    "git push --force-with-lease *",
+    "git push --force-if-includes *",
+    "git push origin --force *",
+    "git push origin -f *",
+    "git push --mirror *",
+    "git push --all *",
+    "git push --delete *",
+    "git push -d *",
+    "git push origin --delete *",
+    "git push origin -d *",
+    "git branch -D *",
+    "git branch -d *",
+    "git branch --delete *",
+    "gh pr merge *",
+    "gh api *",
+]

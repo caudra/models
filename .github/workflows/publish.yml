@@ -16,11 +16,11 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - id: tools
-        uses: actions/cache@v4
+        uses: actions/cache@v6.1.0
         with:
           path: .tools
           key: caudra-models-${{ runner.os }}-${{ hashFiles('caudra.toml') }}
@@ -39,7 +39,7 @@ jobs:
         run: |
           : "${PUBLIC_KEY:?set the CAUDRA_MODELS_PUBLIC_KEY variable}"
           .tools/bin/caudra-models verify dist/v1/models.json --key "$PUBLIC_KEY"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: models-v1
           if-no-files-found: error

@@ -14,6 +14,7 @@
       "prefixes": [
         "glm-5.3"
       ],
+      "supports_thinking": true,
       "small": false,
       "default": true,
       "vision": false,
@@ -31,6 +32,7 @@
       "prefixes": [
         "glm-5.2"
       ],
+      "supports_thinking": true,
       "small": false,
       "default": false,
       "vision": false,

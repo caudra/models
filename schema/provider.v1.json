@@ -229,6 +229,30 @@
             "$ref": "#/$defs/ReasoningOption"
           }
         },
+        "api": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Api"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "plan_context_window": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint32",
+          "minimum": 0
+        },
+        "supports_thinking": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
         "requires": {
           "type": "array",
           "items": {
@@ -426,6 +450,14 @@
             }
           }
         }
+      ]
+    },
+    "Api": {
+      "description": "Known APIs are chat_completions and responses. Other strings require a newer Caudra.",
+      "type": "string",
+      "examples": [
+        "chat_completions",
+        "responses"
       ]
     },
     "PricePeriod": {

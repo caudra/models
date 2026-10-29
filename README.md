@@ -52,6 +52,26 @@ Every Caudra release that reads v1 must keep working with every later v1 file.
 	that does not know the token hides the entry, and an explicit request for it fails with "needs
 	a newer Caudra". Ship the code that handles the token in Caudra before you use the token here.
 
+### Request behaviour
+
+These optional fields belong to each model entry. An absent field adds no special behaviour.
+Serialization omits absent fields.
+
+| Field | Meaning |
+| --- | --- |
+| `api` | OpenAI API selection, either `chat_completions` or `responses`. It applies to prefix matches, including dated snapshots. Coding Plan models and `-codex` IDs always use Responses. |
+| `plan_context_window` | OpenAI Coding Plan entitlement and its context cap in tokens. It applies only when the ID equals one of the entry's `prefixes`. OAuth clamps the model's window to this cap. An absent field grants no entitlement, except for the `-codex` protocol rule. |
+| `supports_thinking` | Z.AI thinking-support override. `true` enables support and `false` disables it. It applies only to exact IDs in `prefixes`, not dated or preview suffixes. An absent field leaves other capability sources unchanged. |
+
+`api` is an open string enum. Clients preserve unknown values and classify the entry as unsupported
+instead of guessing a request format. Unknown object fields remain ignored. The validator bounds
+`plan_context_window` by the same 100,000,000-token limit as other windows.
+
+The initial field values reproduce the ID rules in older Caudra binaries, so these entries need no
+new `requires` token. A later edit that changes request behaviour must use a token if an older
+binary's ID rules would send a different request. Merely adding a field does not make older
+binaries understand it.
+
 ## Reference
 
 ### `updated_at`

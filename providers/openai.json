@@ -29,6 +29,7 @@
       "prefixes": [
         "gpt-6-astra"
       ],
+      "plan_context_window": 372000,
       "small": false,
       "default": true,
       "vision": true,
@@ -80,6 +81,7 @@
       "prefixes": [
         "gpt-6-luna"
       ],
+      "plan_context_window": 372000,
       "small": true,
       "default": true,
       "vision": true,
@@ -132,6 +134,7 @@
       "prefixes": [
         "gpt-6.1-sol"
       ],
+      "plan_context_window": 372000,
       "small": false,
       "default": false,
       "vision": true,
@@ -183,6 +186,7 @@
       "prefixes": [
         "gpt-6.1-terra"
       ],
+      "plan_context_window": 372000,
       "small": false,
       "default": false,
       "vision": true,
@@ -235,6 +239,7 @@
       "prefixes": [
         "gpt-6-sol"
       ],
+      "plan_context_window": 372000,
       "small": false,
       "default": false,
       "vision": true,
@@ -287,6 +292,7 @@
       "prefixes": [
         "gpt-5.6-luna"
       ],
+      "plan_context_window": 372000,
       "small": true,
       "default": true,
       "vision": true,
@@ -339,6 +345,7 @@
       "prefixes": [
         "gpt-5.6-terra"
       ],
+      "plan_context_window": 372000,
       "small": false,
       "default": false,
       "vision": true,
@@ -392,6 +399,7 @@
         "gpt-5.6-sol",
         "gpt-5.6"
       ],
+      "plan_context_window": 372000,
       "small": false,
       "default": true,
       "vision": true,
@@ -473,6 +481,7 @@
       "prefixes": [
         "gpt-5.4-mini"
       ],
+      "plan_context_window": 272000,
       "small": true,
       "default": false,
       "vision": true,
@@ -536,6 +545,7 @@
       "prefixes": [
         "gpt-5.5-pro"
       ],
+      "api": "responses",
       "small": false,
       "default": false,
       "vision": true,
@@ -573,6 +583,7 @@
       "prefixes": [
         "gpt-5.5"
       ],
+      "plan_context_window": 272000,
       "small": false,
       "default": false,
       "vision": true,
@@ -612,6 +623,7 @@
       "prefixes": [
         "gpt-5.4-pro"
       ],
+      "api": "responses",
       "small": false,
       "default": false,
       "vision": true,
@@ -649,6 +661,7 @@
       "prefixes": [
         "gpt-5.4"
       ],
+      "plan_context_window": 272000,
       "small": false,
       "default": false,
       "vision": true,
@@ -688,6 +701,7 @@
       "prefixes": [
         "o3-pro"
       ],
+      "api": "responses",
       "small": false,
       "default": false,
       "vision": true,
@@ -774,6 +788,7 @@
       "prefixes": [
         "gpt-5.2-pro"
       ],
+      "api": "responses",
       "small": false,
       "default": false,
       "vision": true,
@@ -802,6 +817,7 @@
       "prefixes": [
         "gpt-5.2"
       ],
+      "plan_context_window": 272000,
       "small": false,
       "default": false,
       "vision": true,

@@ -473,5 +473,19 @@
       "ours": 131072,
       "reason": "xAI documents no text output limit for Grok 4.5 and later (docs.x.ai/developers/grok-4-7), so the table asks for at most this many."
     }
+  ],
+  "routing": [
+    {
+      "provider": "groq",
+      "field": "env",
+      "catalog": "GROQ_API_KEY",
+      "reason": "Caudra sends @ai-sdk/groq rows to its built-in Groq endpoint, https://api.groq.com/openai/v1, with GROQ_API_KEY (console.groq.com/docs/openai)."
+    },
+    {
+      "provider": "groq",
+      "field": "npm",
+      "catalog": "@ai-sdk/groq",
+      "reason": "Caudra sends @ai-sdk/groq rows to its built-in Groq endpoint, https://api.groq.com/openai/v1, with GROQ_API_KEY (console.groq.com/docs/openai)."
+    }
   ]
 }

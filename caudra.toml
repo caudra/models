@@ -1,0 +1,7 @@
+# `make tool` installs caudra-models from this commit. Keep `toolchain` equal to the
+# channel in that commit's rust-toolchain.toml.
+[tool]
+git = "https://github.com/caudra/caudra"
+rev = "UNPINNED: set to the models-file commit once it is pushed"
+toolchain = "1.99.1"
+features = ["cli"]

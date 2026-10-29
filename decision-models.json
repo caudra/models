@@ -1,0 +1,43 @@
+{
+  "$schema": "schema/decision-models.v1.json",
+  "decision_models": [
+    {
+      "protocol": "openai",
+      "prefixes": [
+        "gpt-6-luna"
+      ],
+      "pricing": {
+        "input": 0.1,
+        "output": 0.0,
+        "cache_write": 0.125,
+        "cache_read": 0.01,
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 0.2,
+            "output": 0.0,
+            "cache_write": 0.25,
+            "cache_read": 0.02
+          }
+        ]
+      },
+      "source": "https://developers.openai.com/api/docs/guides/decisions#pricing-and-availability"
+    },
+    {
+      "protocol": "typesafe",
+      "prefixes": [
+        "jev-1.14",
+        "jev-1.13",
+        "jev-latest",
+        "jev-preview"
+      ],
+      "pricing": {
+        "input": 0.042,
+        "output": 0.0,
+        "cache_write": 0.0,
+        "cache_read": 0.0
+      },
+      "source": "https://docs.typesafe.ai/models"
+    }
+  ]
+}

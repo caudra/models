@@ -1,0 +1,267 @@
+{
+  "$schema": "../schema/provider.v1.json",
+  "slug": "synthetic",
+  "display_name": "Synthetic",
+  "family": "synthetic",
+  "supports_thinking": true,
+  "accepts_arbitrary_models": false,
+  "fallback_max_output": 32000,
+  "fallback_context_window": 128000,
+  "serves_fast_mode": false,
+  "catalog_slug": "synthetic",
+  "models": [
+    {
+      "prefixes": [
+        "hf:moonshotai/Kimi-K3"
+      ],
+      "small": false,
+      "default": true,
+      "vision": true,
+      "family": "synthetic",
+      "pricing": {
+        "input": 3.0,
+        "output": 15.0,
+        "cache_write": 0.0,
+        "cache_read": 0.45
+      },
+      "max_output_tokens": 65536,
+      "context_window": 524288,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "high",
+            "max"
+          ]
+        }
+      ],
+      "note": "Each ladder is the model's `reasoning_parameters.efforts` on Synthetic's\n`/openai/v1/models`. A ladder without `none` cannot be switched off, so off\nasks for its lowest level."
+    },
+    {
+      "prefixes": [
+        "hf:zai-org/GLM-5.3"
+      ],
+      "small": false,
+      "default": false,
+      "vision": false,
+      "family": "synthetic",
+      "pricing": {
+        "input": 1.4,
+        "output": 4.4,
+        "cache_write": 0.0,
+        "cache_read": 0.26
+      },
+      "max_output_tokens": 65536,
+      "context_window": 524288,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "high",
+            "max"
+          ]
+        }
+      ],
+      "note": "Each ladder is the model's `reasoning_parameters.efforts` on Synthetic's\n`/openai/v1/models`. A ladder without `none` cannot be switched off, so off\nasks for its lowest level."
+    },
+    {
+      "prefixes": [
+        "hf:deepseek-ai/DeepSeek-V4.1-Flash-1017"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "synthetic",
+      "pricing": {
+        "input": 0.6,
+        "output": 1.2,
+        "cache_write": 0.0,
+        "cache_read": 0.03
+      },
+      "max_output_tokens": 65536,
+      "context_window": 524288,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ]
+    },
+    {
+      "prefixes": [
+        "hf:deepseek-ai/DeepSeek-V4.1-Flash"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "synthetic",
+      "pricing": {
+        "input": 0.6,
+        "output": 1.2,
+        "cache_write": 0.0,
+        "cache_read": 0.03
+      },
+      "max_output_tokens": 65536,
+      "context_window": 524288,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ]
+    },
+    {
+      "prefixes": [
+        "hf:nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4"
+      ],
+      "small": false,
+      "default": false,
+      "vision": false,
+      "family": "synthetic",
+      "pricing": {
+        "input": 0.3,
+        "output": 1.0,
+        "cache_write": 0.0,
+        "cache_read": 0.06
+      },
+      "max_output_tokens": 65536,
+      "context_window": 262144,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ]
+    },
+    {
+      "prefixes": [
+        "hf:openai/gpt-oss-120b"
+      ],
+      "small": false,
+      "default": false,
+      "vision": false,
+      "family": "synthetic",
+      "pricing": {
+        "input": 0.1,
+        "output": 0.1,
+        "cache_write": 0.0,
+        "cache_read": 0.02
+      },
+      "max_output_tokens": 65536,
+      "context_window": 131072,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ]
+    },
+    {
+      "prefixes": [
+        "hf:zai-org/GLM-4.7-Flash"
+      ],
+      "small": true,
+      "default": true,
+      "vision": false,
+      "family": "synthetic",
+      "pricing": {
+        "input": 0.1,
+        "output": 0.5,
+        "cache_write": 0.0,
+        "cache_read": 0.02
+      },
+      "max_output_tokens": 65536,
+      "context_window": 196608,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ]
+    },
+    {
+      "prefixes": [
+        "hf:zai-org/GLM-5.3-Flash"
+      ],
+      "small": true,
+      "default": false,
+      "vision": true,
+      "family": "synthetic",
+      "pricing": {
+        "input": 0.15,
+        "output": 0.5,
+        "cache_write": 0.0,
+        "cache_read": 0.04
+      },
+      "max_output_tokens": 65536,
+      "context_window": 524288,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "high",
+            "max"
+          ]
+        }
+      ],
+      "note": "Each ladder is the model's `reasoning_parameters.efforts` on Synthetic's\n`/openai/v1/models`. A ladder without `none` cannot be switched off, so off\nasks for its lowest level."
+    },
+    {
+      "prefixes": [
+        "hf:Qwen/Qwen3.8-27B"
+      ],
+      "small": true,
+      "default": false,
+      "vision": true,
+      "family": "synthetic",
+      "pricing": {
+        "input": 0.45,
+        "output": 2.2,
+        "cache_write": 0.0,
+        "cache_read": 0.09
+      },
+      "max_output_tokens": 65536,
+      "context_window": 262144,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "xhigh"
+          ]
+        }
+      ]
+    }
+  ]
+}

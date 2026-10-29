@@ -1,0 +1,19 @@
+[
+  "anthropic",
+  "openai",
+  "google",
+  "copilot",
+  "copilot-enterprise",
+  "ollama",
+  "llama-cpp",
+  "mistral",
+  "zai",
+  "deepseek",
+  "openrouter",
+  "synthetic",
+  "tensorx",
+  "opencode",
+  "opencode-go",
+  "xai",
+  "aperture"
+]

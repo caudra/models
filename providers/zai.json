@@ -1,0 +1,301 @@
+{
+  "$schema": "../schema/provider.v1.json",
+  "slug": "zai",
+  "display_name": "Z.AI",
+  "family": "glm",
+  "supports_thinking": false,
+  "accepts_arbitrary_models": false,
+  "fallback_max_output": 16000,
+  "fallback_context_window": 128000,
+  "serves_fast_mode": false,
+  "catalog_slug": "zai",
+  "models": [
+    {
+      "prefixes": [
+        "glm-5.3"
+      ],
+      "small": false,
+      "default": true,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 1.4,
+        "output": 4.4,
+        "cache_write": 0.0,
+        "cache_read": 0.26
+      },
+      "max_output_tokens": 131072,
+      "context_window": 1000000
+    },
+    {
+      "prefixes": [
+        "glm-5.2"
+      ],
+      "small": false,
+      "default": false,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 1.4,
+        "output": 4.4,
+        "cache_write": 0.0,
+        "cache_read": 0.26
+      },
+      "max_output_tokens": 131072,
+      "context_window": 1000000
+    },
+    {
+      "prefixes": [
+        "glm-5.1"
+      ],
+      "small": false,
+      "default": false,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 1.4,
+        "output": 4.4,
+        "cache_write": 0.0,
+        "cache_read": 0.26
+      },
+      "max_output_tokens": 131072,
+      "context_window": 200000
+    },
+    {
+      "prefixes": [
+        "glm-5"
+      ],
+      "small": false,
+      "default": false,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 1.0,
+        "output": 3.2,
+        "cache_write": 0.0,
+        "cache_read": 0.2
+      },
+      "max_output_tokens": 131072,
+      "context_window": 200000
+    },
+    {
+      "prefixes": [
+        "glm-5.3-flashx"
+      ],
+      "small": true,
+      "default": false,
+      "vision": true,
+      "family": "glm",
+      "pricing": {
+        "input": 0.37,
+        "output": 1.25,
+        "cache_write": 0.0,
+        "cache_read": 0.075
+      },
+      "max_output_tokens": 131072,
+      "context_window": 1000000
+    },
+    {
+      "prefixes": [
+        "glm-5.3-flash"
+      ],
+      "small": true,
+      "default": false,
+      "vision": true,
+      "family": "glm",
+      "pricing": {
+        "input": 0.15,
+        "output": 0.5,
+        "cache_write": 0.0,
+        "cache_read": 0.03
+      },
+      "max_output_tokens": 131072,
+      "context_window": 1000000
+    },
+    {
+      "prefixes": [
+        "glm-4.7-flashx"
+      ],
+      "small": true,
+      "default": false,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 0.07,
+        "output": 0.4,
+        "cache_write": 0.0,
+        "cache_read": 0.01
+      },
+      "max_output_tokens": 131072,
+      "context_window": 200000
+    },
+    {
+      "prefixes": [
+        "glm-4.7-flash"
+      ],
+      "small": true,
+      "default": true,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 0.0,
+        "output": 0.0,
+        "cache_write": 0.0,
+        "cache_read": 0.0
+      },
+      "max_output_tokens": 131072,
+      "context_window": 200000
+    },
+    {
+      "prefixes": [
+        "glm-4.7",
+        "glm-4.6"
+      ],
+      "small": false,
+      "default": false,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 0.6,
+        "output": 2.2,
+        "cache_write": 0.0,
+        "cache_read": 0.11
+      },
+      "max_output_tokens": 131072,
+      "context_window": 200000
+    },
+    {
+      "prefixes": [
+        "glm-4.6v"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "glm",
+      "pricing": {
+        "input": 0.3,
+        "output": 0.9,
+        "cache_write": 0.0,
+        "cache_read": 0.05
+      },
+      "context_window": 128000
+    },
+    {
+      "prefixes": [
+        "glm-4.6v-flashx"
+      ],
+      "small": true,
+      "default": false,
+      "vision": true,
+      "family": "glm",
+      "pricing": {
+        "input": 0.04,
+        "output": 0.4,
+        "cache_write": 0.0,
+        "cache_read": 0.004
+      },
+      "context_window": 128000
+    },
+    {
+      "prefixes": [
+        "glm-4.6v-flash"
+      ],
+      "small": true,
+      "default": false,
+      "vision": true,
+      "family": "glm",
+      "pricing": {
+        "input": 0.0,
+        "output": 0.0,
+        "cache_write": 0.0,
+        "cache_read": 0.0
+      },
+      "context_window": 128000
+    },
+    {
+      "prefixes": [
+        "glm-4.5-flash"
+      ],
+      "small": true,
+      "default": false,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 0.0,
+        "output": 0.0,
+        "cache_write": 0.0,
+        "cache_read": 0.0
+      },
+      "max_output_tokens": 98304,
+      "context_window": 131072
+    },
+    {
+      "prefixes": [
+        "glm-4.5-air"
+      ],
+      "small": true,
+      "default": false,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 0.2,
+        "output": 1.1,
+        "cache_write": 0.0,
+        "cache_read": 0.03
+      },
+      "max_output_tokens": 98304,
+      "context_window": 131072
+    },
+    {
+      "prefixes": [
+        "glm-4.5-airx"
+      ],
+      "small": true,
+      "default": false,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 1.1,
+        "output": 4.5,
+        "cache_write": 0.0,
+        "cache_read": 0.22
+      },
+      "max_output_tokens": 98304,
+      "context_window": 131072
+    },
+    {
+      "prefixes": [
+        "glm-4.5-x"
+      ],
+      "small": false,
+      "default": false,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 2.2,
+        "output": 8.9,
+        "cache_write": 0.0,
+        "cache_read": 0.45
+      },
+      "max_output_tokens": 98304,
+      "context_window": 131072
+    },
+    {
+      "prefixes": [
+        "glm-4.5"
+      ],
+      "small": false,
+      "default": false,
+      "vision": false,
+      "family": "glm",
+      "pricing": {
+        "input": 0.6,
+        "output": 2.2,
+        "cache_write": 0.0,
+        "cache_read": 0.11
+      },
+      "max_output_tokens": 98304,
+      "context_window": 131072
+    }
+  ]
+}

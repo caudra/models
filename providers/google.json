@@ -1,0 +1,172 @@
+{
+  "$schema": "../schema/provider.v1.json",
+  "slug": "google",
+  "display_name": "Google",
+  "family": "gemini",
+  "supports_thinking": true,
+  "accepts_arbitrary_models": true,
+  "fallback_max_output": 65536,
+  "fallback_context_window": 1000000,
+  "serves_fast_mode": false,
+  "catalog_slug": "google",
+  "models": [
+    {
+      "prefixes": [
+        "gemini-4-argon"
+      ],
+      "small": false,
+      "default": true,
+      "vision": true,
+      "family": "gemini",
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "cache_write": 0.0,
+        "cache_read": 0.1
+      },
+      "max_output_tokens": 65536,
+      "context_window": 1048576,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ],
+      "note": "The output limit of every Gemini model in the table. On Gemini 4 it is the\nmost one streaming request returns. Asking for more starts long decode,\nwhich stops with `CONTINUATION` and expects the client to resume.\n\nGemini 4 and 3 take a `thinkingLevel` and cannot turn thinking off, so\n`off` runs at the lowest level. Argon and 3.8 Flash reject `minimal`.\n\nIntroductory through 2026-11-30, see `PRICE_CHANGES`."
+    },
+    {
+      "prefixes": [
+        "gemini-3.8-flash"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gemini",
+      "pricing": {
+        "input": 0.75,
+        "output": 3.75,
+        "cache_write": 0.0,
+        "cache_read": 0.075
+      },
+      "max_output_tokens": 65536,
+      "context_window": 1048576,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ],
+      "note": "The output limit of every Gemini model in the table. On Gemini 4 it is the\nmost one streaming request returns. Asking for more starts long decode,\nwhich stops with `CONTINUATION` and expects the client to resume.\n\nGemini 4 and 3 take a `thinkingLevel` and cannot turn thinking off, so\n`off` runs at the lowest level. Argon and 3.8 Flash reject `minimal`.\n\nIntroductory through 2026-12-31, see `PRICE_CHANGES`."
+    },
+    {
+      "prefixes": [
+        "gemini-3.6-flash"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gemini",
+      "pricing": {
+        "input": 0.75,
+        "output": 3.75,
+        "cache_write": 0.0,
+        "cache_read": 0.075
+      },
+      "max_output_tokens": 65536,
+      "context_window": 1048576,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "minimal",
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ],
+      "note": "The output limit of every Gemini model in the table. On Gemini 4 it is the\nmost one streaming request returns. Asking for more starts long decode,\nwhich stops with `CONTINUATION` and expects the client to resume.\n\nIntroductory through 2026-12-31, see `PRICE_CHANGES`."
+    },
+    {
+      "prefixes": [
+        "gemini-3.5-flash-lite"
+      ],
+      "small": true,
+      "default": true,
+      "vision": true,
+      "family": "gemini",
+      "pricing": {
+        "input": 0.3,
+        "output": 2.5,
+        "cache_write": 0.0,
+        "cache_read": 0.03
+      },
+      "max_output_tokens": 65536,
+      "context_window": 1048576,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "minimal",
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ],
+      "note": "The output limit of every Gemini model in the table. On Gemini 4 it is the\nmost one streaming request returns. Asking for more starts long decode,\nwhich stops with `CONTINUATION` and expects the client to resume."
+    }
+  ],
+  "price_periods": [
+    {
+      "prefix": "gemini-4-argon",
+      "during": {
+        "from": "2026-12-01"
+      },
+      "pricing": {
+        "input": 4.0,
+        "output": 20.0,
+        "cache_write": 0.0,
+        "cache_read": 0.2
+      },
+      "note": "Introductory rates Google ends on a set day, from\n<https://ai.google.dev/gemini-api/docs/pricing>.",
+      "source": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    {
+      "prefix": "gemini-3.8-flash",
+      "during": {
+        "from": "2027-01-01"
+      },
+      "pricing": {
+        "input": 1.5,
+        "output": 7.5,
+        "cache_write": 0.0,
+        "cache_read": 0.15
+      },
+      "note": "Introductory rates Google ends on a set day, from\n<https://ai.google.dev/gemini-api/docs/pricing>.",
+      "source": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    {
+      "prefix": "gemini-3.6-flash",
+      "during": {
+        "from": "2027-01-01"
+      },
+      "pricing": {
+        "input": 1.5,
+        "output": 7.5,
+        "cache_write": 0.0,
+        "cache_read": 0.15
+      },
+      "note": "Introductory rates Google ends on a set day, from\n<https://ai.google.dev/gemini-api/docs/pricing>.",
+      "source": "https://ai.google.dev/gemini-api/docs/pricing"
+    }
+  ]
+}

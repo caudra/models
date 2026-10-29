@@ -1,0 +1,14 @@
+{
+  "$schema": "../schema/provider.v1.json",
+  "slug": "copilot-enterprise",
+  "display_name": "Copilot Enterprise",
+  "family": "generic",
+  "supports_thinking": false,
+  "accepts_arbitrary_models": true,
+  "fallback_max_output": 100000,
+  "fallback_context_window": 200000,
+  "serves_fast_mode": false,
+  "catalog_slug": "github-copilot",
+  "models_from": "copilot",
+  "note": "Shares Copilot's model table under its own slug, so discovered metadata\nfor one account never lands on the other."
+}

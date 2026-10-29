@@ -1,0 +1,12 @@
+{
+  "$schema": "../schema/provider.v1.json",
+  "slug": "opencode-go",
+  "display_name": "Opencode Go",
+  "family": "generic",
+  "supports_thinking": false,
+  "accepts_arbitrary_models": true,
+  "fallback_max_output": 64000,
+  "fallback_context_window": 128000,
+  "serves_fast_mode": false,
+  "catalog_slug": "opencode-go"
+}

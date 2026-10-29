@@ -1,0 +1,4 @@
+/.tools/
+/target/
+*.sig
+*.pkcs8

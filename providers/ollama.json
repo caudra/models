@@ -1,0 +1,11 @@
+{
+  "$schema": "../schema/provider.v1.json",
+  "slug": "ollama",
+  "display_name": "Ollama",
+  "family": "generic",
+  "supports_thinking": false,
+  "accepts_arbitrary_models": true,
+  "fallback_max_output": 16384,
+  "fallback_context_window": 128000,
+  "serves_fast_mode": false
+}

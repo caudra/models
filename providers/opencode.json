@@ -1,0 +1,12 @@
+{
+  "$schema": "../schema/provider.v1.json",
+  "slug": "opencode",
+  "display_name": "Opencode Zen",
+  "family": "generic",
+  "supports_thinking": true,
+  "accepts_arbitrary_models": true,
+  "fallback_max_output": 128000,
+  "fallback_context_window": 256000,
+  "serves_fast_mode": false,
+  "catalog_slug": "opencode"
+}

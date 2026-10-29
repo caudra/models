@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DecisionFile",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "decision_models": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DecisionModel"
+      }
+    }
+  },
+  "required": [
+    "decision_models"
+  ],
+  "$defs": {
+    "DecisionModel": {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "type": "string"
+        },
+        "prefixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pricing": {
+          "$ref": "#/$defs/Pricing"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "protocol",
+        "pricing",
+        "source"
+      ]
+    },
+    "Pricing": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "number",
+          "format": "double"
+        },
+        "output": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_write": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_read": {
+          "type": "number",
+          "format": "double"
+        },
+        "fast": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FastPricing"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Tier"
+          }
+        }
+      },
+      "required": [
+        "input",
+        "output",
+        "cache_write",
+        "cache_read"
+      ]
+    },
+    "FastPricing": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "number",
+          "format": "double"
+        },
+        "output": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_write": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_read": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "input",
+        "output",
+        "cache_write",
+        "cache_read"
+      ]
+    },
+    "Tier": {
+      "type": "object",
+      "properties": {
+        "above": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0
+        },
+        "input": {
+          "type": "number",
+          "format": "double"
+        },
+        "output": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_write": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_read": {
+          "type": "number",
+          "format": "double"
+        },
+        "fast": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FastPricing"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "above",
+        "input",
+        "output",
+        "cache_write",
+        "cache_read"
+      ]
+    }
+  }
+}

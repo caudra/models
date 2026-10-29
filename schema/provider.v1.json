@@ -1,0 +1,507 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Provider",
+  "type": "object",
+  "properties": {
+    "slug": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "family": {
+      "$ref": "#/$defs/Family"
+    },
+    "supports_thinking": {
+      "type": "boolean",
+      "default": false
+    },
+    "accepts_arbitrary_models": {
+      "type": "boolean",
+      "default": false
+    },
+    "fallback_max_output": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "uint32",
+      "minimum": 0
+    },
+    "fallback_context_window": {
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0
+    },
+    "serves_fast_mode": {
+      "type": "boolean",
+      "default": false
+    },
+    "catalog_slug": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pricing_schedule": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PricingSchedule"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "models_from": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "generations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Generation"
+      }
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ModelEntry"
+      }
+    },
+    "price_periods": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PricePeriod"
+      }
+    },
+    "availability": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Availability"
+      }
+    },
+    "requires": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "slug",
+    "display_name",
+    "family",
+    "fallback_context_window"
+  ],
+  "$defs": {
+    "Family": {
+      "description": "Known families are claude, generic, gemini, glm, gpt, synthetic. Other strings require a newer Caudra.",
+      "type": "string",
+      "examples": [
+        "claude",
+        "generic",
+        "gemini",
+        "glm",
+        "gpt",
+        "synthetic"
+      ]
+    },
+    "PricingSchedule": {
+      "type": "object",
+      "properties": {
+        "windows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PricingWindow"
+          }
+        },
+        "multiplier": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "multiplier"
+      ]
+    },
+    "PricingWindow": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "integer",
+          "format": "uint8",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "end": {
+          "type": "integer",
+          "format": "uint8",
+          "minimum": 0,
+          "maximum": 255
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ]
+    },
+    "Generation": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "label"
+      ]
+    },
+    "ModelEntry": {
+      "type": "object",
+      "properties": {
+        "prefixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "small": {
+          "type": "boolean",
+          "default": false
+        },
+        "default": {
+          "type": "boolean",
+          "default": false
+        },
+        "vision": {
+          "type": "boolean",
+          "default": false
+        },
+        "family": {
+          "$ref": "#/$defs/Family"
+        },
+        "pricing": {
+          "$ref": "#/$defs/Pricing"
+        },
+        "max_output_tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint32",
+          "minimum": 0
+        },
+        "context_window": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0
+        },
+        "window_excludes_output": {
+          "type": "boolean"
+        },
+        "reasoning_options": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/ReasoningOption"
+          }
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "family",
+        "pricing",
+        "context_window"
+      ]
+    },
+    "Pricing": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "number",
+          "format": "double"
+        },
+        "output": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_write": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_read": {
+          "type": "number",
+          "format": "double"
+        },
+        "fast": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FastPricing"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Tier"
+          }
+        }
+      },
+      "required": [
+        "input",
+        "output",
+        "cache_write",
+        "cache_read"
+      ]
+    },
+    "FastPricing": {
+      "type": "object",
+      "properties": {
+        "input": {
+          "type": "number",
+          "format": "double"
+        },
+        "output": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_write": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_read": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": [
+        "input",
+        "output",
+        "cache_write",
+        "cache_read"
+      ]
+    },
+    "Tier": {
+      "type": "object",
+      "properties": {
+        "above": {
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0
+        },
+        "input": {
+          "type": "number",
+          "format": "double"
+        },
+        "output": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_write": {
+          "type": "number",
+          "format": "double"
+        },
+        "cache_read": {
+          "type": "number",
+          "format": "double"
+        },
+        "fast": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FastPricing"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "above",
+        "input",
+        "output",
+        "cache_write",
+        "cache_read"
+      ]
+    },
+    "ReasoningOption": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "type": {
+              "const": "toggle"
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "effort"
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "budget_tokens"
+            },
+            "min": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "max": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "not": {
+                "enum": [
+                  "toggle",
+                  "effort",
+                  "budget_tokens"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "PricePeriod": {
+      "type": "object",
+      "properties": {
+        "prefix": {
+          "type": "string"
+        },
+        "during": {
+          "$ref": "#/$defs/Period"
+        },
+        "pricing": {
+          "$ref": "#/$defs/Pricing"
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "prefix",
+        "during",
+        "pricing"
+      ]
+    },
+    "Period": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "until": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Availability": {
+      "type": "object",
+      "properties": {
+        "prefix": {
+          "type": "string"
+        },
+        "during": {
+          "$ref": "#/$defs/Period"
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "prefix",
+        "during"
+      ]
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "../schema/provider.v1.json",
+  "slug": "deepseek",
+  "display_name": "DeepSeek",
+  "family": "generic",
+  "supports_thinking": true,
+  "accepts_arbitrary_models": false,
+  "fallback_max_output": 384000,
+  "fallback_context_window": 1000000,
+  "serves_fast_mode": false,
+  "catalog_slug": "deepseek",
+  "pricing_schedule": {
+    "windows": [
+      {
+        "start": 1,
+        "end": 4
+      },
+      {
+        "start": 6,
+        "end": 10
+      }
+    ],
+    "multiplier": 2.0
+  },
+  "models": [
+    {
+      "prefixes": [
+        "deepseek-flash",
+        "deepseek-v4-flash"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "generic",
+      "pricing": {
+        "input": 0.15,
+        "output": 0.6,
+        "cache_write": 0.0,
+        "cache_read": 0.003
+      },
+      "max_output_tokens": 393216,
+      "context_window": 1000000
+    },
+    {
+      "prefixes": [
+        "deepseek-v4-pro"
+      ],
+      "small": false,
+      "default": true,
+      "vision": false,
+      "family": "generic",
+      "pricing": {
+        "input": 0.66,
+        "output": 1.98,
+        "cache_write": 0.0,
+        "cache_read": 0.022
+      },
+      "max_output_tokens": 393216,
+      "context_window": 1000000
+    }
+  ],
+  "note": "Peak hours double every rate, and the tables below quote the off-peak ones.\n<https://api-docs.deepseek.com/quick_start/pricing/>",
+  "source": "https://api-docs.deepseek.com/quick_start/pricing/"
+}

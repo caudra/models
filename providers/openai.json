@@ -1,0 +1,865 @@
+{
+  "$schema": "../schema/provider.v1.json",
+  "slug": "openai",
+  "display_name": "OpenAI",
+  "family": "gpt",
+  "supports_thinking": true,
+  "accepts_arbitrary_models": false,
+  "fallback_max_output": 100000,
+  "fallback_context_window": 200000,
+  "serves_fast_mode": true,
+  "catalog_slug": "openai",
+  "generations": [
+    {
+      "label": "gpt-6",
+      "members": [
+        "gpt-6-",
+        "gpt-6.1-"
+      ]
+    },
+    {
+      "label": "gpt-5.6",
+      "members": [
+        "gpt-5.6"
+      ]
+    }
+  ],
+  "models": [
+    {
+      "prefixes": [
+        "gpt-6-astra"
+      ],
+      "small": false,
+      "default": true,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 10.0,
+        "output": 50.0,
+        "cache_write": 12.5,
+        "cache_read": 1.0,
+        "fast": {
+          "input": 20.0,
+          "output": 100.0,
+          "cache_write": 25.0,
+          "cache_read": 2.0
+        },
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 20.0,
+            "output": 75.0,
+            "cache_write": 25.0,
+            "cache_read": 2.0,
+            "fast": {
+              "input": 40.0,
+              "output": 150.0,
+              "cache_write": 50.0,
+              "cache_read": 4.0
+            }
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 372000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nWorking window for the long-context OpenAI models, gpt-5.6 and gpt-6.\nDeliberately below what the API accepts — gpt-6 advertises 1,050,000 —\nbecause the window is what caudra fills before compacting, and cost and\nlatency scale with it.\n\ngpt-6-astra and gpt-6.1-sol reason unconditionally, so they drop the `none`\nthe gpt-5.6 ladder offers while keeping the rungs above it."
+    },
+    {
+      "prefixes": [
+        "gpt-6-luna"
+      ],
+      "small": true,
+      "default": true,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 0.1,
+        "output": 0.5,
+        "cache_write": 0.125,
+        "cache_read": 0.01,
+        "fast": {
+          "input": 0.2,
+          "output": 1.0,
+          "cache_write": 0.25,
+          "cache_read": 0.02
+        },
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 0.2,
+            "output": 0.75,
+            "cache_write": 0.25,
+            "cache_read": 0.02,
+            "fast": {
+              "input": 0.4,
+              "output": 1.5,
+              "cache_write": 0.5,
+              "cache_read": 0.04
+            }
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 372000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nWorking window for the long-context OpenAI models, gpt-5.6 and gpt-6.\nDeliberately below what the API accepts — gpt-6 advertises 1,050,000 —\nbecause the window is what caudra fills before compacting, and cost and\nlatency scale with it.\n\nLevels these models declare, matching the models.dev catalog. Kept in the\ntable so a cold catalog still resolves an effort correctly, and so the Codex\nplan models the catalog has not reached resolve at all."
+    },
+    {
+      "prefixes": [
+        "gpt-6.1-sol"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "cache_write": 2.5,
+        "cache_read": 0.1,
+        "fast": {
+          "input": 4.0,
+          "output": 20.0,
+          "cache_write": 5.0,
+          "cache_read": 0.2
+        },
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 4.0,
+            "output": 15.0,
+            "cache_write": 5.0,
+            "cache_read": 0.2,
+            "fast": {
+              "input": 8.0,
+              "output": 30.0,
+              "cache_write": 10.0,
+              "cache_read": 0.4
+            }
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 372000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nWorking window for the long-context OpenAI models, gpt-5.6 and gpt-6.\nDeliberately below what the API accepts — gpt-6 advertises 1,050,000 —\nbecause the window is what caudra fills before compacting, and cost and\nlatency scale with it.\n\ngpt-6-astra and gpt-6.1-sol reason unconditionally, so they drop the `none`\nthe gpt-5.6 ladder offers while keeping the rungs above it."
+    },
+    {
+      "prefixes": [
+        "gpt-6.1-terra"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 1.0,
+        "output": 5.0,
+        "cache_write": 1.25,
+        "cache_read": 0.05,
+        "fast": {
+          "input": 2.0,
+          "output": 10.0,
+          "cache_write": 2.5,
+          "cache_read": 0.1
+        },
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 2.0,
+            "output": 7.5,
+            "cache_write": 2.5,
+            "cache_read": 0.1,
+            "fast": {
+              "input": 4.0,
+              "output": 15.0,
+              "cache_write": 5.0,
+              "cache_read": 0.2
+            }
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 372000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nWorking window for the long-context OpenAI models, gpt-5.6 and gpt-6.\nDeliberately below what the API accepts — gpt-6 advertises 1,050,000 —\nbecause the window is what caudra fills before compacting, and cost and\nlatency scale with it.\n\nLevels these models declare, matching the models.dev catalog. Kept in the\ntable so a cold catalog still resolves an effort correctly, and so the Codex\nplan models the catalog has not reached resolve at all."
+    },
+    {
+      "prefixes": [
+        "gpt-6-sol"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 2.0,
+        "output": 10.0,
+        "cache_write": 2.5,
+        "cache_read": 0.2,
+        "fast": {
+          "input": 4.0,
+          "output": 20.0,
+          "cache_write": 5.0,
+          "cache_read": 0.4
+        },
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 4.0,
+            "output": 15.0,
+            "cache_write": 5.0,
+            "cache_read": 0.4,
+            "fast": {
+              "input": 8.0,
+              "output": 30.0,
+              "cache_write": 10.0,
+              "cache_read": 0.8
+            }
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 372000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nWorking window for the long-context OpenAI models, gpt-5.6 and gpt-6.\nDeliberately below what the API accepts — gpt-6 advertises 1,050,000 —\nbecause the window is what caudra fills before compacting, and cost and\nlatency scale with it.\n\nLevels these models declare, matching the models.dev catalog. Kept in the\ntable so a cold catalog still resolves an effort correctly, and so the Codex\nplan models the catalog has not reached resolve at all."
+    },
+    {
+      "prefixes": [
+        "gpt-5.6-luna"
+      ],
+      "small": true,
+      "default": true,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 0.2,
+        "output": 1.2,
+        "cache_write": 0.25,
+        "cache_read": 0.02,
+        "fast": {
+          "input": 0.4,
+          "output": 2.4,
+          "cache_write": 0.5,
+          "cache_read": 0.04
+        },
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 0.4,
+            "output": 1.8,
+            "cache_write": 0.5,
+            "cache_read": 0.04,
+            "fast": {
+              "input": 0.8,
+              "output": 3.6,
+              "cache_write": 1.0,
+              "cache_read": 0.08
+            }
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 372000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nWorking window for the long-context OpenAI models, gpt-5.6 and gpt-6.\nDeliberately below what the API accepts — gpt-6 advertises 1,050,000 —\nbecause the window is what caudra fills before compacting, and cost and\nlatency scale with it.\n\nLevels these models declare, matching the models.dev catalog. Kept in the\ntable so a cold catalog still resolves an effort correctly, and so the Codex\nplan models the catalog has not reached resolve at all."
+    },
+    {
+      "prefixes": [
+        "gpt-5.6-terra"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 2.0,
+        "output": 12.0,
+        "cache_write": 2.5,
+        "cache_read": 0.2,
+        "fast": {
+          "input": 4.0,
+          "output": 24.0,
+          "cache_write": 5.0,
+          "cache_read": 0.4
+        },
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 4.0,
+            "output": 18.0,
+            "cache_write": 5.0,
+            "cache_read": 0.4,
+            "fast": {
+              "input": 8.0,
+              "output": 36.0,
+              "cache_write": 10.0,
+              "cache_read": 0.8
+            }
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 372000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nWorking window for the long-context OpenAI models, gpt-5.6 and gpt-6.\nDeliberately below what the API accepts — gpt-6 advertises 1,050,000 —\nbecause the window is what caudra fills before compacting, and cost and\nlatency scale with it.\n\nLevels these models declare, matching the models.dev catalog. Kept in the\ntable so a cold catalog still resolves an effort correctly, and so the Codex\nplan models the catalog has not reached resolve at all."
+    },
+    {
+      "prefixes": [
+        "gpt-5.6-sol",
+        "gpt-5.6"
+      ],
+      "small": false,
+      "default": true,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 4.0,
+        "output": 20.0,
+        "cache_write": 5.0,
+        "cache_read": 0.4,
+        "fast": {
+          "input": 8.0,
+          "output": 40.0,
+          "cache_write": 10.0,
+          "cache_read": 0.8
+        },
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 8.0,
+            "output": 30.0,
+            "cache_write": 10.0,
+            "cache_read": 0.8,
+            "fast": {
+              "input": 16.0,
+              "output": 60.0,
+              "cache_write": 20.0,
+              "cache_read": 1.6
+            }
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 372000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nWorking window for the long-context OpenAI models, gpt-5.6 and gpt-6.\nDeliberately below what the API accepts — gpt-6 advertises 1,050,000 —\nbecause the window is what caudra fills before compacting, and cost and\nlatency scale with it.\n\nLevels these models declare, matching the models.dev catalog. Kept in the\ntable so a cold catalog still resolves an effort correctly, and so the Codex\nplan models the catalog has not reached resolve at all.\n\nOpenAI's promotional rate, offered through at least 2026-11-21."
+    },
+    {
+      "prefixes": [
+        "gpt-5.4-nano"
+      ],
+      "small": true,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 0.2,
+        "output": 1.25,
+        "cache_write": 0.0,
+        "cache_read": 0.02
+      },
+      "max_output_tokens": 128000,
+      "context_window": 400000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ]
+    },
+    {
+      "prefixes": [
+        "gpt-5.4-mini"
+      ],
+      "small": true,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 0.75,
+        "output": 4.5,
+        "cache_write": 0.0,
+        "cache_read": 0.075
+      },
+      "max_output_tokens": 128000,
+      "context_window": 400000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ]
+    },
+    {
+      "prefixes": [
+        "gpt-4.1-mini"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 0.4,
+        "output": 1.6,
+        "cache_write": 0.0,
+        "cache_read": 0.1
+      },
+      "max_output_tokens": 32768,
+      "context_window": 1047576
+    },
+    {
+      "prefixes": [
+        "gpt-4.1"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 2.0,
+        "output": 8.0,
+        "cache_write": 0.0,
+        "cache_read": 0.5
+      },
+      "max_output_tokens": 32768,
+      "context_window": 1047576
+    },
+    {
+      "prefixes": [
+        "gpt-5.5-pro"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 30.0,
+        "output": 180.0,
+        "cache_write": 0.0,
+        "cache_read": 0.0,
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 60.0,
+            "output": 270.0,
+            "cache_write": 0.0,
+            "cache_read": 0.0
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 1050000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nThe gpt-5 pro models start at `medium`, per each model page."
+    },
+    {
+      "prefixes": [
+        "gpt-5.5"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 5.0,
+        "output": 30.0,
+        "cache_write": 0.0,
+        "cache_read": 0.5,
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 10.0,
+            "output": 45.0,
+            "cache_write": 0.0,
+            "cache_read": 1.0
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 1050000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate."
+    },
+    {
+      "prefixes": [
+        "gpt-5.4-pro"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 30.0,
+        "output": 180.0,
+        "cache_write": 0.0,
+        "cache_read": 0.0,
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 60.0,
+            "output": 270.0,
+            "cache_write": 0.0,
+            "cache_read": 0.0
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 1050000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nThe gpt-5 pro models start at `medium`, per each model page."
+    },
+    {
+      "prefixes": [
+        "gpt-5.4"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 2.5,
+        "output": 15.0,
+        "cache_write": 0.0,
+        "cache_read": 0.25,
+        "tiers": [
+          {
+            "above": 272000,
+            "input": 5.0,
+            "output": 22.5,
+            "cache_write": 0.0,
+            "cache_read": 0.5
+          }
+        ]
+      },
+      "max_output_tokens": 128000,
+      "context_window": 1050000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ],
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate."
+    },
+    {
+      "prefixes": [
+        "o3-pro"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 20.0,
+        "output": 80.0,
+        "cache_write": 0.0,
+        "cache_read": 0.0
+      },
+      "max_output_tokens": 100000,
+      "context_window": 200000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ],
+      "note": "Shuts down 2026-12-11 (https://developers.openai.com/api/docs/deprecations).\n\nThe o-series predates the explicit opt-out, so it always reasons.",
+      "source": "https://developers.openai.com/api/docs/deprecations"
+    },
+    {
+      "prefixes": [
+        "o3"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 2.0,
+        "output": 8.0,
+        "cache_write": 0.0,
+        "cache_read": 0.5
+      },
+      "max_output_tokens": 100000,
+      "context_window": 200000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ],
+      "note": "The o-series predates the explicit opt-out, so it always reasons."
+    },
+    {
+      "prefixes": [
+        "gpt-5.3-codex"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 1.75,
+        "output": 14.0,
+        "cache_write": 0.0,
+        "cache_read": 0.175
+      },
+      "max_output_tokens": 128000,
+      "context_window": 400000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ]
+    },
+    {
+      "prefixes": [
+        "gpt-5.2-pro"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 21.0,
+        "output": 168.0,
+        "cache_write": 0.0,
+        "cache_read": 0.0
+      },
+      "max_output_tokens": 128000,
+      "context_window": 400000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ],
+      "note": "The gpt-5 pro models start at `medium`, per each model page."
+    },
+    {
+      "prefixes": [
+        "gpt-5.2"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "gpt",
+      "pricing": {
+        "input": 1.75,
+        "output": 14.0,
+        "cache_write": 0.0,
+        "cache_read": 0.175
+      },
+      "max_output_tokens": 128000,
+      "context_window": 400000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ]
+    }
+  ],
+  "availability": [
+    {
+      "prefix": "o3",
+      "during": {
+        "until": "2026-12-11"
+      },
+      "note": "Shutdowns from <https://developers.openai.com/api/docs/deprecations>.",
+      "source": "https://developers.openai.com/api/docs/deprecations"
+    },
+    {
+      "prefix": "o3-pro",
+      "during": {
+        "until": "2026-12-11"
+      },
+      "note": "Shutdowns from <https://developers.openai.com/api/docs/deprecations>.",
+      "source": "https://developers.openai.com/api/docs/deprecations"
+    },
+    {
+      "prefix": "gpt-5.3-codex",
+      "during": {
+        "until": "2027-04-01"
+      },
+      "note": "Shutdowns from <https://developers.openai.com/api/docs/deprecations>.",
+      "source": "https://developers.openai.com/api/docs/deprecations"
+    },
+    {
+      "prefix": "gpt-5.4-nano",
+      "during": {
+        "until": "2027-04-01"
+      },
+      "note": "Shutdowns from <https://developers.openai.com/api/docs/deprecations>.",
+      "source": "https://developers.openai.com/api/docs/deprecations"
+    }
+  ]
+}

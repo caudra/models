@@ -1,0 +1,165 @@
+{
+  "$schema": "../schema/provider.v1.json",
+  "slug": "xai",
+  "display_name": "xAI",
+  "family": "generic",
+  "supports_thinking": true,
+  "accepts_arbitrary_models": true,
+  "fallback_max_output": 131072,
+  "fallback_context_window": 500000,
+  "serves_fast_mode": false,
+  "catalog_slug": "xai",
+  "models": [
+    {
+      "prefixes": [
+        "grok-4.7"
+      ],
+      "small": false,
+      "default": true,
+      "vision": true,
+      "family": "generic",
+      "pricing": {
+        "input": 2.0,
+        "output": 6.0,
+        "cache_write": 0.0,
+        "cache_read": 0.5,
+        "tiers": [
+          {
+            "above": 199999,
+            "input": 4.0,
+            "output": 12.0,
+            "cache_write": 0.0,
+            "cache_read": 1.0
+          }
+        ]
+      },
+      "max_output_tokens": 131072,
+      "context_window": 500000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ],
+      "note": "Once a prompt reaches this many tokens, xAI bills every token of the\nrequest at the long-context rate. A tier's `above` is exclusive, so the\ntiers sit one token below it.\n\nLevels these models declare, matching the models.dev catalog. The live\n`/language-models` response overrides these once it lands."
+    },
+    {
+      "prefixes": [
+        "grok-4.6"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "generic",
+      "pricing": {
+        "input": 2.0,
+        "output": 6.0,
+        "cache_write": 0.0,
+        "cache_read": 0.5,
+        "tiers": [
+          {
+            "above": 199999,
+            "input": 4.0,
+            "output": 12.0,
+            "cache_write": 0.0,
+            "cache_read": 1.0
+          }
+        ]
+      },
+      "max_output_tokens": 131072,
+      "context_window": 500000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "high",
+            "xhigh"
+          ]
+        }
+      ],
+      "note": "Once a prompt reaches this many tokens, xAI bills every token of the\nrequest at the long-context rate. A tier's `above` is exclusive, so the\ntiers sit one token below it.\n\nLevels these models declare, matching the models.dev catalog. The live\n`/language-models` response overrides these once it lands."
+    },
+    {
+      "prefixes": [
+        "grok-4.5"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "generic",
+      "pricing": {
+        "input": 2.0,
+        "output": 6.0,
+        "cache_write": 0.0,
+        "cache_read": 0.3,
+        "tiers": [
+          {
+            "above": 199999,
+            "input": 4.0,
+            "output": 12.0,
+            "cache_write": 0.0,
+            "cache_read": 0.6
+          }
+        ]
+      },
+      "max_output_tokens": 131072,
+      "context_window": 500000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ],
+      "note": "Once a prompt reaches this many tokens, xAI bills every token of the\nrequest at the long-context rate. A tier's `above` is exclusive, so the\ntiers sit one token below it."
+    },
+    {
+      "prefixes": [
+        "grok-4.3"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "generic",
+      "pricing": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache_write": 0.0,
+        "cache_read": 0.2,
+        "tiers": [
+          {
+            "above": 199999,
+            "input": 2.5,
+            "output": 5.0,
+            "cache_write": 0.0,
+            "cache_read": 0.4
+          }
+        ]
+      },
+      "max_output_tokens": 131072,
+      "context_window": 1000000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ],
+      "note": "Once a prompt reaches this many tokens, xAI bills every token of the\nrequest at the long-context rate. A tier's `above` is exclusive, so the\ntiers sit one token below it."
+    }
+  ]
+}

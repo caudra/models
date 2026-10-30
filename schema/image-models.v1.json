@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ImageFile",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "image_models": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ImageModel"
+      }
+    }
+  },
+  "required": [
+    "image_models"
+  ],
+  "$defs": {
+    "ImageModel": {
+      "description": "A model behind `image_generate`. Image models are their own class: they\nnever appear among the chat models of `/model`.",
+      "type": "object",
+      "properties": {
+        "backend": {
+          "description": "The image backend that serves it, such as `openai`, `bfl` or `fal`.",
+          "type": "string"
+        },
+        "id": {
+          "description": "The id sent to the backend. An answered id that starts with it, such\nas a dated snapshot, is priced by this entry.",
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "default": {
+          "description": "The model a backend uses when none is chosen. At most one per backend.",
+          "type": "boolean"
+        },
+        "pricing": {
+          "$ref": "#/$defs/ImagePricing"
+        },
+        "max_references": {
+          "description": "How many reference images one call may carry. 0 means text only.",
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0,
+          "default": 0
+        },
+        "qualities": {
+          "description": "The `quality` values the backend accepts, cheapest first. Empty when\nit has no quality setting.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "seed": {
+          "type": "boolean"
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "description": "The provider page that states the prices.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "backend",
+        "id",
+        "display_name",
+        "pricing",
+        "source"
+      ]
+    },
+    "ImagePricing": {
+      "description": "What one generated image costs, in US dollars. Token rates are per million\ntokens. A cost the backend reports itself always wins over this estimate.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "per_image"
+            },
+            "image": {
+              "type": "number",
+              "format": "double"
+            },
+            "by_quality": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number",
+                "format": "double"
+              }
+            },
+            "input_image": {
+              "type": "number",
+              "format": "double",
+              "default": 0.0
+            }
+          },
+          "required": [
+            "type",
+            "image"
+          ]
+        },
+        {
+          "description": "The first megapixel at `first`, each further one at `extra`, and every\nreference megapixel at `input`.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "per_megapixel"
+            },
+            "first": {
+              "type": "number",
+              "format": "double"
+            },
+            "extra": {
+              "type": "number",
+              "format": "double"
+            },
+            "input": {
+              "type": "number",
+              "format": "double",
+              "default": 0.0
+            }
+          },
+          "required": [
+            "type",
+            "first",
+            "extra"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "tokens"
+            },
+            "text_input": {
+              "type": "number",
+              "format": "double"
+            },
+            "image_input": {
+              "type": "number",
+              "format": "double"
+            },
+            "image_output": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          "required": [
+            "type",
+            "text_input",
+            "image_input",
+            "image_output"
+          ]
+        },
+        {
+          "description": "Billed against a subscription plan, with no list price per image.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "subscription"
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      ]
+    }
+  }
+}

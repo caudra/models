@@ -1,0 +1,310 @@
+{
+  "$schema": "schema/image-models.v1.json",
+  "image_models": [
+    {
+      "backend": "chatgpt",
+      "id": "gpt-image-2.5-sunburst",
+      "display_name": "GPT Image 2.5 Sunburst",
+      "default": true,
+      "pricing": {
+        "type": "subscription"
+      },
+      "max_references": 16,
+      "qualities": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "auto"
+      ],
+      "note": "The most capable GPT Image model and the better editor",
+      "source": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst"
+    },
+    {
+      "backend": "chatgpt",
+      "id": "gpt-image-2.5-flare",
+      "display_name": "GPT Image 2.5 Flare",
+      "pricing": {
+        "type": "subscription"
+      },
+      "max_references": 16,
+      "qualities": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "auto"
+      ],
+      "note": "Faster than Sunburst at the same price",
+      "source": "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare"
+    },
+    {
+      "backend": "openai",
+      "id": "gpt-image-2.5-sunburst",
+      "display_name": "GPT Image 2.5 Sunburst",
+      "default": true,
+      "pricing": {
+        "type": "tokens",
+        "text_input": 5.0,
+        "image_input": 8.0,
+        "image_output": 30.0
+      },
+      "max_references": 16,
+      "qualities": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "auto"
+      ],
+      "source": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst"
+    },
+    {
+      "backend": "openai",
+      "id": "gpt-image-2.5-flare",
+      "display_name": "GPT Image 2.5 Flare",
+      "pricing": {
+        "type": "tokens",
+        "text_input": 5.0,
+        "image_input": 8.0,
+        "image_output": 30.0
+      },
+      "max_references": 16,
+      "qualities": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "auto"
+      ],
+      "source": "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare"
+    },
+    {
+      "backend": "google",
+      "id": "gemini-nano-banana-2.1",
+      "display_name": "Nano Banana 2.1",
+      "default": true,
+      "pricing": {
+        "type": "tokens",
+        "text_input": 1.5,
+        "image_input": 1.5,
+        "image_output": 30.0
+      },
+      "max_references": 14,
+      "source": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    {
+      "backend": "google",
+      "id": "gemini-3-pro-image",
+      "display_name": "Gemini 3 Pro Image",
+      "pricing": {
+        "type": "tokens",
+        "text_input": 2.0,
+        "image_input": 2.0,
+        "image_output": 120.0
+      },
+      "max_references": 14,
+      "source": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    {
+      "backend": "openrouter",
+      "id": "openai/gpt-image-2.5-sunburst",
+      "display_name": "GPT Image 2.5 Sunburst",
+      "default": true,
+      "pricing": {
+        "type": "tokens",
+        "text_input": 5.0,
+        "image_input": 8.0,
+        "image_output": 30.0
+      },
+      "max_references": 16,
+      "qualities": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "auto"
+      ],
+      "source": "https://openrouter.ai/openai/gpt-image-2.5-sunburst"
+    },
+    {
+      "backend": "openrouter",
+      "id": "openai/gpt-image-2.5-flare",
+      "display_name": "GPT Image 2.5 Flare",
+      "pricing": {
+        "type": "tokens",
+        "text_input": 5.0,
+        "image_input": 8.0,
+        "image_output": 30.0
+      },
+      "max_references": 16,
+      "qualities": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max",
+        "auto"
+      ],
+      "source": "https://openrouter.ai/openai/gpt-image-2.5-flare"
+    },
+    {
+      "backend": "openrouter",
+      "id": "google/gemini-nano-banana-2.1",
+      "display_name": "Nano Banana 2.1",
+      "pricing": {
+        "type": "tokens",
+        "text_input": 1.5,
+        "image_input": 1.5,
+        "image_output": 30.0
+      },
+      "max_references": 14,
+      "source": "https://openrouter.ai/google/gemini-nano-banana-2.1"
+    },
+    {
+      "backend": "openrouter",
+      "id": "google/gemini-3-pro-image",
+      "display_name": "Nano Banana Pro",
+      "pricing": {
+        "type": "tokens",
+        "text_input": 2.0,
+        "image_input": 2.0,
+        "image_output": 120.0
+      },
+      "max_references": 14,
+      "source": "https://openrouter.ai/google/gemini-3-pro-image"
+    },
+    {
+      "backend": "openrouter",
+      "id": "black-forest-labs/flux.2-pro",
+      "display_name": "FLUX.2 Pro",
+      "pricing": {
+        "type": "per_megapixel",
+        "first": 0.03,
+        "extra": 0.03
+      },
+      "max_references": 8,
+      "seed": true,
+      "source": "https://openrouter.ai/black-forest-labs/flux.2-pro"
+    },
+    {
+      "backend": "openrouter",
+      "id": "black-forest-labs/flux-3-image",
+      "display_name": "FLUX 3 Image",
+      "pricing": {
+        "type": "per_image",
+        "image": 0.048
+      },
+      "max_references": 10,
+      "note": "Priced at 1K: 768 px costs $0.041, 2K $0.10 and 4K $0.607",
+      "source": "https://openrouter.ai/black-forest-labs/flux-3-image"
+    },
+    {
+      "backend": "openrouter",
+      "id": "bytedance-seed/seedream-5-0-pro",
+      "display_name": "Seedream 5.0 Pro",
+      "pricing": {
+        "type": "per_image",
+        "image": 0.045,
+        "input_image": 0.003
+      },
+      "max_references": 14,
+      "seed": true,
+      "note": "High resolution costs $0.09",
+      "source": "https://openrouter.ai/bytedance-seed/seedream-5-0-pro"
+    },
+    {
+      "backend": "openrouter",
+      "id": "x-ai/grok-imagine-image-2.0",
+      "display_name": "Grok Imagine Image 2.0",
+      "pricing": {
+        "type": "per_image",
+        "image": 0.04,
+        "by_quality": {
+          "medium": 0.06
+        },
+        "input_image": 0.01
+      },
+      "max_references": 3,
+      "qualities": [
+        "low",
+        "medium"
+      ],
+      "note": "Priced at 1K: 2K costs $0.02 more",
+      "source": "https://openrouter.ai/x-ai/grok-imagine-image-2.0"
+    },
+    {
+      "backend": "openrouter",
+      "id": "qwen/qwen-image-3-pro",
+      "display_name": "Qwen Image 3 Pro",
+      "pricing": {
+        "type": "per_image",
+        "image": 0.04,
+        "input_image": 0.003
+      },
+      "max_references": 3,
+      "seed": true,
+      "note": "Priced at 1K: 2K costs $0.075",
+      "source": "https://openrouter.ai/qwen/qwen-image-3-pro"
+    },
+    {
+      "backend": "openrouter",
+      "id": "recraft/recraft-v4.1-pro",
+      "display_name": "Recraft V4.1 Pro",
+      "pricing": {
+        "type": "per_image",
+        "image": 0.21
+      },
+      "max_references": 1,
+      "source": "https://openrouter.ai/recraft/recraft-v4.1-pro"
+    },
+    {
+      "backend": "xai",
+      "id": "grok-imagine-image-2.0",
+      "display_name": "Grok Imagine Image 2.0",
+      "default": true,
+      "pricing": {
+        "type": "per_image",
+        "image": 0.04,
+        "input_image": 0.01
+      },
+      "max_references": 1,
+      "source": "https://docs.x.ai/developers/model-capabilities/images/generation"
+    },
+    {
+      "backend": "bfl",
+      "id": "flux-2-pro",
+      "display_name": "FLUX.2 [pro]",
+      "default": true,
+      "pricing": {
+        "type": "per_megapixel",
+        "first": 0.03,
+        "extra": 0.015,
+        "input": 0.015
+      },
+      "max_references": 8,
+      "seed": true,
+      "source": "https://bfl.ai/pricing"
+    },
+    {
+      "backend": "fal",
+      "id": "fal-ai/flux-2-pro",
+      "display_name": "FLUX.2 [pro]",
+      "default": true,
+      "pricing": {
+        "type": "per_megapixel",
+        "first": 0.03,
+        "extra": 0.015,
+        "input": 0.015
+      },
+      "max_references": 8,
+      "seed": true,
+      "source": "https://fal.ai/models/fal-ai/flux-2-pro"
+    }
+  ]
+}

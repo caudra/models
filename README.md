@@ -238,6 +238,7 @@ To rotate the key:
 | `providers/index.json` | The ordered list of built-in provider slugs |
 | `providers/<slug>.json` | One provider. `models_from` copies another provider's models, generations, price periods, and availability |
 | `decision-models.json` | The models behind decision endpoints |
+| `image-models.json` | The models behind `image_generate`, with their prices and capabilities, per image backend |
 | `import/models-dev.json` | The reviewed models.dev import |
 | `audit/accepted.json` | Accepted catalog differences, routing changes, and deliberate caps, each with a reason |
 | `.caudra/permissions.toml` | Shell rules for the model-watch session: the one allowed push and the denied pushes, deletions, and merges |

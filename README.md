@@ -203,7 +203,7 @@ The `publish` workflow runs on every push to `main`. It checks the repository, s
 `dist/v1/models.json` with the `CAUDRA_MODELS_SIGNING_KEY` secret, and verifies the signature with
 the public key in the `CAUDRA_MODELS_PUBLIC_KEY` repository variable. It uploads `models.json`,
 `models.json.sig`, and `schema.json` as the `models-v1` artifact. Then it sends a
-`models-published` dispatch to `caudra/website`, which verifies the signature and deploys the
+`models-published` dispatch to `caudra/infra`, which verifies the signature and deploys the
 artifact to `models.caudra.ai`. The dispatch needs the `WEBSITE_DISPATCH_TOKEN` secret.
 
 The private key never enters this repository. `.gitignore` excludes `*.pkcs8` and `*.sig`.

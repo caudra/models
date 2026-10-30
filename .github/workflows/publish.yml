@@ -56,4 +56,4 @@ jobs:
           RUN_ID: ${{ github.run_id }}
         run: |
           : "${GH_TOKEN:?set the WEBSITE_DISPATCH_TOKEN secret}"
-          gh api repos/caudra/website/dispatches -f event_type=models-published -f "client_payload[run_id]=$RUN_ID"
+          gh api repos/caudra/infra/dispatches -f event_type=models-published -f "client_payload[run_id]=$RUN_ID"

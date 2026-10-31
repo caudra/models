@@ -24,7 +24,7 @@ jobs:
         uses: actions/cache@v6.1.0
         with:
           path: .tools
-          key: caudra-models-${{ runner.os }}-${{ hashFiles('caudra.toml') }}
+          key: caudra-models-${{ runner.os }}-${{ hashFiles('caudra.toml', 'Makefile') }}
       - if: steps.tools.outputs.cache-hit != 'true'
         run: make tool
       - run: make check

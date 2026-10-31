@@ -109,10 +109,10 @@ depend on its prompt:
 	token remain the guard.
 
 1. Use a dedicated clean checkout of this data repository. Its origin must be `github.com/caudra/models`.
-2. Install the pinned maintainer tool with `make tool`. Until the revision in `caudra.toml` is published, use `make tool CAUDRA_SRC=<models-file checkout>`.
+2. Install the pinned maintainer tool with `make tool`. Until the revision in `caudra.toml` is published, use `make tool CAUDRA_SRC=<caudra checkout>`.
 3. Install `gh` and authenticate it with the token described above.
 4. Enable experimental automations. Set `automations = true` under `[experimental]` in your global Caudra config.
-5. Start Caudra in that checkout with `caudra --autopilot` in Build mode. Review and trust `.caudra/permissions.toml` in `/permissions` and `.caudra/automations/model-watch.rhai` in `/automations`.
+5. Start Caudra in that checkout with `caudra --autopilot` in Build mode. Review and trust `.caudra/permissions.toml` in `/permissions` and `.caudra/automations/model-watch.ts` in `/automations`.
 6. Arm it with `/automations arm model-watch {"first_since":"2026-10-01"}`. Choose your first survey date.
 
 Keep the session open. The schedule checks every 30 minutes and starts once a day from 07:00 UTC.
@@ -130,8 +130,8 @@ that need a person stay in the report rather than holding a goal open indefinite
 ### Replay cases
 
 `make test` runs the pinned tool's
-`caudra-models replay .caudra/automations/model-watch.rhai tests/model-watch.json` command.
-It validates the script, smoke-runs its triggers, and checks every recorded firing without
+`caudra-models replay .caudra/automations/model-watch.ts tests/model-watch.json` command.
+It validates and type-checks the script, smoke-runs its triggers, and checks every recorded firing without
 performing its actions. It does not call Git, `gh`, a model, or the network.
 
 The JSON file is an array of cases. Each has a `name`, `event`, initial `state`, `args`, and
@@ -222,7 +222,7 @@ To rotate the key:
 
 | Target | What it does |
 | --- | --- |
-| `make tool` | Installs `caudra-models` into `.tools/bin` |
+| `make tool` | Builds Caudra's QuickJS guest and installs `caudra-models` into `.tools/bin`. Needs clang with the WebAssembly backend and `llvm-ar` |
 | `make check` | Validates the data, compares it with the published file at `PUBLISHED_REF` (default `origin/main`), and fails if `dist/` or `schema/` is stale |
 | `make build` | Writes `dist/` and `schema/`. `NOW=` sets the time for a changed snapshot |
 | `make import` | Downloads models.dev, rewrites `import/models-dev.json`, and builds |
@@ -243,7 +243,7 @@ To rotate the key:
 | `audit/accepted.json` | Accepted catalog differences, routing changes, and deliberate caps, each with a reason |
 | `.caudra/permissions.toml` | Shell rules for the model-watch session: the one allowed push and the denied pushes, deletions, and merges |
 | `.caudra/skills/model-updates/SKILL.md` | Provider sources, survey instructions, and apply rules |
-| `.caudra/automations/model-watch.rhai` | The daily survey, update, and PR workflow |
+| `.caudra/automations/model-watch.ts` | The daily survey, update, and PR workflow |
 | `tests/model-watch.json` | Fixed automation events with expected outcomes, actions, and state |
 | `reports/` | Ignored audit and survey reports |
 | `schema/*.v1.json` | Generated JSON schemas for the authoring files and the snapshot |

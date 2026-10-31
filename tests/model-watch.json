@@ -4868,5 +4868,183 @@
         "halted": true
       }
     }
+  },
+  {
+    "name": "model_watch_halts_when_a_step_goal_is_gone_for_two_hours/1",
+    "event": {
+      "fire_id": "fire-1",
+      "at": 1791189000,
+      "session": {
+        "id": "session-1",
+        "title": {
+          "$untrusted": "Fix the login flow"
+        },
+        "name": "@builder",
+        "mode": "build",
+        "status": "idle",
+        "status_since": 1791188999,
+        "goal": null,
+        "autopilot": {
+          "owns_goal": false,
+          "waiting": false
+        },
+        "cost": null,
+        "groups": [],
+        "work": {
+          "held": null,
+          "paused": []
+        }
+      },
+      "trigger": "schedule",
+      "scheduled_for": 1791189000,
+      "late_by_s": 0
+    },
+    "state": {
+      "current": "model-watch run 2026-10-05, step 1 of 4, sync: verify that this checkout's origin is github.com/caudra/models. Stop if it is not. Fetch origin/main. On a clean checkout, create model-watch/2026-10-05 from origin/main if it does not exist, or switch to it and merge origin/main if it does. Resolve conflicts on this run branch only. Never discard, stash, or commit unrelated changes. Never switch or write another checkout. The branch must contain origin/main, and `make check` must pass. Do not push in this step.",
+      "run": "2026-10-05",
+      "since": "2026-10-01",
+      "step": "sync",
+      "step_at": 1791194400
+    },
+    "args": {
+      "start_hour": 7,
+      "first_since": "2026-10-01",
+      "continuation_limit": 40,
+      "step_notice_hours": 6
+    },
+    "now_ms": 1791196200000,
+    "expected": {
+      "end": {
+        "end": "completed"
+      },
+      "actions": [
+        {
+          "kind": "notify",
+          "text": "model-watch stopped: the sync goal of the 2026-10-05 run ended without finishing. Arm model-watch again in /automations to retry the step."
+        }
+      ],
+      "state": {
+        "current": "model-watch run 2026-10-05, step 1 of 4, sync: verify that this checkout's origin is github.com/caudra/models. Stop if it is not. Fetch origin/main. On a clean checkout, create model-watch/2026-10-05 from origin/main if it does not exist, or switch to it and merge origin/main if it does. Resolve conflicts on this run branch only. Never discard, stash, or commit unrelated changes. Never switch or write another checkout. The branch must contain origin/main, and `make check` must pass. Do not push in this step.",
+        "run": "2026-10-05",
+        "since": "2026-10-01",
+        "step": "sync",
+        "step_at": 1791194400,
+        "halted": true
+      }
+    }
+  },
+  {
+    "name": "model_watch_halts_when_a_step_goal_is_gone_for_two_hours/2",
+    "event": {
+      "fire_id": "fire-1",
+      "at": 1791189000,
+      "session": {
+        "id": "session-1",
+        "title": {
+          "$untrusted": "Fix the login flow"
+        },
+        "name": "@builder",
+        "mode": "build",
+        "status": "idle",
+        "status_since": 1791189000,
+        "goal": null,
+        "autopilot": {
+          "owns_goal": false,
+          "waiting": false
+        },
+        "cost": null,
+        "groups": [],
+        "work": {
+          "held": null,
+          "paused": []
+        }
+      },
+      "trigger": "schedule",
+      "scheduled_for": 1791189000,
+      "late_by_s": 0
+    },
+    "state": {
+      "current": "model-watch run 2026-10-05, step 1 of 4, sync: verify that this checkout's origin is github.com/caudra/models. Stop if it is not. Fetch origin/main. On a clean checkout, create model-watch/2026-10-05 from origin/main if it does not exist, or switch to it and merge origin/main if it does. Resolve conflicts on this run branch only. Never discard, stash, or commit unrelated changes. Never switch or write another checkout. The branch must contain origin/main, and `make check` must pass. Do not push in this step.",
+      "run": "2026-10-05",
+      "since": "2026-10-01",
+      "step": "sync",
+      "step_at": 1791194400
+    },
+    "args": {
+      "start_hour": 7,
+      "first_since": "2026-10-01",
+      "continuation_limit": 40,
+      "step_notice_hours": 6
+    },
+    "now_ms": 1791196200000,
+    "expected": {
+      "end": {
+        "end": "skipped",
+        "detail": {
+          "reason": "the sync step is in progress"
+        }
+      },
+      "actions": [],
+      "state": {
+        "current": "model-watch run 2026-10-05, step 1 of 4, sync: verify that this checkout's origin is github.com/caudra/models. Stop if it is not. Fetch origin/main. On a clean checkout, create model-watch/2026-10-05 from origin/main if it does not exist, or switch to it and merge origin/main if it does. Resolve conflicts on this run branch only. Never discard, stash, or commit unrelated changes. Never switch or write another checkout. The branch must contain origin/main, and `make check` must pass. Do not push in this step.",
+        "run": "2026-10-05",
+        "since": "2026-10-01",
+        "step": "sync",
+        "step_at": 1791194400
+      }
+    }
+  },
+  {
+    "name": "model_watch_waits_for_build_mode/1",
+    "event": {
+      "fire_id": "fire-1",
+      "at": 1791189000,
+      "session": {
+        "id": "session-1",
+        "title": {
+          "$untrusted": "Fix the login flow"
+        },
+        "name": "@builder",
+        "mode": "plan",
+        "status": "idle",
+        "status_since": 1791189000,
+        "goal": null,
+        "autopilot": {
+          "owns_goal": false,
+          "waiting": false
+        },
+        "cost": null,
+        "groups": [],
+        "work": {
+          "held": null,
+          "paused": []
+        }
+      },
+      "trigger": "schedule",
+      "scheduled_for": 1791189000,
+      "late_by_s": 0
+    },
+    "state": {},
+    "args": {
+      "start_hour": 7,
+      "first_since": "2026-10-01",
+      "continuation_limit": 40,
+      "step_notice_hours": 6
+    },
+    "now_ms": 1791198000000,
+    "expected": {
+      "end": {
+        "end": "completed"
+      },
+      "actions": [
+        {
+          "kind": "notify",
+          "text": "model-watch cannot start today's run: the session is not in Build mode."
+        }
+      ],
+      "state": {
+        "nagged": "2026-10-05"
+      }
+    }
   }
 ]

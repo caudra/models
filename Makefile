@@ -18,6 +18,8 @@ COMMIT_PATTERN := ^[0-9a-f]{40}$$
 
 pin = $(shell $(PYTHON) -c 'import sys, tomllib; value = tomllib.load(open("$(PIN)", "rb"))["tool"][sys.argv[1]]; print(",".join(value) if isinstance(value, list) else value)' $(1))
 INSTALL = install --locked --root $(abspath $(TOOLS_DIR)) --features $(call pin,features)
+SOURCE_DIR := $(TOOLS_DIR)/caudra
+guest = WORKCELL_JS_GUEST_WASM=$(1)/target/js-guest/js-guest.wasm WORKCELL_TYPESCRIPT_JS_GZ=$(1)/target/js-guest/typescript.js.gz
 BUILD = $(TOOL) build . $(if $(NOW),--now $(NOW))
 
 .PHONY: help tool require-tool published check build catalog import audit test hooks
@@ -27,12 +29,17 @@ help: ## List the targets
 
 tool: ## Install caudra-models into .tools/bin from caudra.toml, or from CAUDRA_SRC=<caudra checkout>
 ifdef CAUDRA_SRC
-	cd $(CAUDRA_SRC) && cargo $(INSTALL) --path caudra-models
+	cd $(CAUDRA_SRC) && $(PYTHON) scripts/build-js-guest.py && $(call guest,$(abspath $(CAUDRA_SRC))) cargo $(INSTALL) --path caudra-models
 else
 	@rev='$(call pin,rev)'; [[ $$rev =~ $(COMMIT_PATTERN) ]] || { \
 		echo "$(PIN): [tool] rev is not a full commit hash ($$rev). Pin it, or run make tool CAUDRA_SRC=<caudra checkout>." >&2; exit 1; }
-	rustup toolchain install $(call pin,toolchain) --profile minimal
-	cargo +$(call pin,toolchain) $(INSTALL) --git $(call pin,git) --rev $(call pin,rev) caudra-models
+	rustup toolchain install $(call pin,toolchain) --profile minimal --target wasm32-unknown-unknown
+	rm -rf "$(SOURCE_DIR)"
+	git init --quiet "$(SOURCE_DIR)"
+	git -C "$(SOURCE_DIR)" fetch --quiet --depth 1 $(call pin,git) $(call pin,rev)
+	git -C "$(SOURCE_DIR)" checkout --quiet FETCH_HEAD
+	cd "$(SOURCE_DIR)" && $(PYTHON) scripts/build-js-guest.py && $(call guest,$(abspath $(SOURCE_DIR))) cargo +$(call pin,toolchain) $(INSTALL) --path caudra-models
+	rm -rf "$(SOURCE_DIR)"
 endif
 
 require-tool:
@@ -68,7 +75,7 @@ audit: require-tool catalog published ## Audit models.dev into reports/<date>.md
 	$(TOOL) audit . --models-dev "$(CATALOG)" --published "$(PUBLISHED)" $(if $(SINCE),--since "$(SINCE)") --out "$(OUT)"
 
 test: require-tool ## Replay the model-watch cases without network or external actions
-	$(TOOL) replay .caudra/automations/model-watch.rhai tests/model-watch.json
+	$(TOOL) replay .caudra/automations/model-watch.ts tests/model-watch.json
 
 hooks: ## Install a pre-commit hook that runs make check
 	@hook="$$(git rev-parse --git-path hooks)/pre-commit"; \

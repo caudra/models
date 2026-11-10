@@ -352,13 +352,6 @@
     },
     {
       "provider": "mistral",
-      "model": "glm-5-2",
-      "field": "context",
-      "catalog": "1048576",
-      "reason": "Mistral's model pages say \"1M\" (https://docs.mistral.ai/models.md), and `/v1/models` reports the exact window at runtime."
-    },
-    {
-      "provider": "mistral",
       "model": "deepseek-v4-1-flash-1017",
       "field": "context",
       "catalog": "1048576",

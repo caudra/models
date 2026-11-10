@@ -1,8 +1,8 @@
 {
   "$schema": "schema.json",
   "format": 1,
-  "updated_at": "2026-11-10T10:57:25.392667271Z",
-  "content_sha256": "0147881f9e884962291a71bc32ee74d70237df68dfb433a93933b14f106a4c07",
+  "updated_at": "2026-11-10T11:07:59.109757681Z",
+  "content_sha256": "480131fcb7290ca0b96eee947fa3e53830bf2abb1c35326cb957dca6e2d0ec71",
   "providers": [
     {
       "slug": "anthropic",
@@ -3322,7 +3322,6 @@
       "models": [
         {
           "prefixes": [
-            "mistral-medium-latest",
             "mistral-medium-3.5",
             "mistral-medium-3-5",
             "mistral-medium-2604",
@@ -3338,27 +3337,46 @@
             "cache_write": 0.0,
             "cache_read": 0.15
           },
-          "context_window": 262144
+          "context_window": 262144,
+          "note": "Deprecated 2026-10-31 and retiring on 2027-04-30, with Mistral Large 4 as its\nreplacement (https://docs.mistral.ai/models.md). It stays the default until\nthen, and Mistral Large 4 takes over after it."
         },
         {
           "prefixes": [
             "mistral-large-4"
           ],
           "small": false,
+          "default": true,
+          "vision": true,
+          "family": "generic",
+          "pricing": {
+            "input": 0.7,
+            "output": 2.1,
+            "cache_write": 0.0,
+            "cache_read": 0.07
+          },
+          "context_window": 1000000,
+          "note": "Generally available since 2026-11-05 at $0.7 input, $0.07 cached input and\n$2.1 output per million tokens (https://docs.mistral.ai/models/mistral-large-4-0.md).\nIt is listed after Mistral Medium 3.5 so that it becomes the default when Medium\n3.5 retires on 2027-04-30, as Mistral names it Medium 3.5's replacement.",
+          "source": "https://docs.mistral.ai/models/mistral-large-4-0.md"
+        },
+        {
+          "prefixes": [
+            "mistral-medium-latest"
+          ],
+          "small": false,
           "default": false,
           "vision": true,
           "family": "generic",
           "pricing": {
-            "input": 0.68,
-            "output": 2.09,
+            "input": 1.5,
+            "output": 7.5,
             "cache_write": 0.0,
-            "cache_read": 0.07
+            "cache_read": 0.15
           },
-          "context_window": 1000000
+          "context_window": 262144,
+          "note": "Split from Mistral Medium 3.5, which retires on 2027-04-30. Mistral does not say\nwhere `mistral-medium-latest` points after that, so it keeps the same rates."
         },
         {
           "prefixes": [
-            "mistral-large-latest",
             "mistral-large-2512"
           ],
           "small": false,
@@ -3371,7 +3389,25 @@
             "cache_write": 0.0,
             "cache_read": 0.05
           },
-          "context_window": 262144
+          "context_window": 262144,
+          "note": "Deprecated 2026-10-31 and retiring on 2027-04-30, with Mistral Large 4 as its\nreplacement (https://docs.mistral.ai/models.md)."
+        },
+        {
+          "prefixes": [
+            "mistral-large-latest"
+          ],
+          "small": false,
+          "default": false,
+          "vision": true,
+          "family": "generic",
+          "pricing": {
+            "input": 0.5,
+            "output": 1.5,
+            "cache_write": 0.0,
+            "cache_read": 0.05
+          },
+          "context_window": 262144,
+          "note": "Split from Mistral Large 2512, which retires on 2027-04-30. Mistral does not say\nwhere `mistral-large-latest` points after that, so it keeps the same rates."
         },
         {
           "prefixes": [
@@ -3395,23 +3431,6 @@
             "zai-glm-5-3",
             "zai-glm-5",
             "zai-glm-latest"
-          ],
-          "small": false,
-          "default": false,
-          "vision": false,
-          "family": "glm",
-          "pricing": {
-            "input": 1.4,
-            "output": 4.4,
-            "cache_write": 0.0,
-            "cache_read": 0.14
-          },
-          "context_window": 1000000
-        },
-        {
-          "prefixes": [
-            "glm-5-2",
-            "zai-glm-5-2"
           ],
           "small": false,
           "default": false,
@@ -3480,7 +3499,8 @@
         {
           "prefix": "mistral-large-4",
           "during": {
-            "from": "2026-10-20"
+            "from": "2026-10-20",
+            "until": "2026-11-05"
           },
           "pricing": {
             "input": 1.36,
@@ -3488,18 +3508,26 @@
             "cache_write": 0.0,
             "cache_read": 0.14
           },
-          "note": "Mistral Large 4 launched on 2026-10-06 at half price \"for 2 weeks\"\n(docs.mistral.ai/getting-started/changelog), so list price from 2026-10-20,\nas <https://docs.mistral.ai/models/mistral-large-4-0> quotes it.",
-          "source": "https://docs.mistral.ai/models/mistral-large-4-0"
+          "note": "Mistral Large 4 launched on 2026-10-06 at half price \"for 2 weeks\"\n(docs.mistral.ai/getting-started/changelog), and the model page then quoted\n1.36 / 4.18 / 0.14. Since general availability on 2026-11-05 it quotes\n0.7 / 2.1 / 0.07, so the higher rate holds only between those dates.",
+          "source": "https://docs.mistral.ai/models/mistral-large-4-0.md"
         }
       ],
       "availability": [
         {
-          "prefix": "glm-5-2",
+          "prefix": "mistral-medium-3-5",
           "during": {
-            "until": "2026-10-31"
+            "until": "2027-04-30"
           },
-          "note": "Shutdowns from <https://docs.mistral.ai/getting-started/changelog/>.",
-          "source": "https://docs.mistral.ai/getting-started/changelog/"
+          "note": "Deprecated 2026-10-31 and retiring on 2027-04-30, replaced by Mistral Large 4,\nper <https://docs.mistral.ai/models.md>.",
+          "source": "https://docs.mistral.ai/models.md"
+        },
+        {
+          "prefix": "mistral-large-2512",
+          "during": {
+            "until": "2027-04-30"
+          },
+          "note": "Deprecated 2026-10-31 and retiring on 2027-04-30, replaced by Mistral Large 4,\nper <https://docs.mistral.ai/models.md>.",
+          "source": "https://docs.mistral.ai/models.md"
         }
       ]
     },

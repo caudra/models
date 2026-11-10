@@ -1,8 +1,8 @@
 {
   "$schema": "schema.json",
   "format": 1,
-  "updated_at": "2026-11-10T11:09:30.510205498Z",
-  "content_sha256": "e187dbfdd35c105e31026539e587984d493963edf4c39764ee243185e985b9de",
+  "updated_at": "2026-11-10T11:09:59.984206448Z",
+  "content_sha256": "501dd152c56d45776fc9ecdf971297616f7a4efe291c2a7eeaf23782d6f94340",
   "providers": [
     {
       "slug": "anthropic",
@@ -3674,6 +3674,25 @@
           },
           "max_output_tokens": 131072,
           "context_window": 200000
+        },
+        {
+          "prefixes": [
+            "glm-5.3-flashx-legal"
+          ],
+          "small": true,
+          "default": false,
+          "vision": true,
+          "family": "glm",
+          "pricing": {
+            "input": 0.37,
+            "output": 1.25,
+            "cache_write": 0.0,
+            "cache_read": 0.075
+          },
+          "max_output_tokens": 131072,
+          "context_window": 1000000,
+          "note": "GLM-5.3-FlashX-Legal is served on the Chat Completion API with function calling,\nat $0.37 input, $0.075 cached and $1.25 output per million tokens, with a 1M\ncontext and 128K output (https://docs.z.ai/guides/vlm/glm-5.3-flash.md). It\ncopies GLM-5.3-FlashX, including vision, which its page does not state\nseparately, and gets its own prefix so it never resolves to that entry.",
+          "source": "https://docs.z.ai/guides/overview/pricing"
         },
         {
           "prefixes": [

@@ -358,6 +358,13 @@
       "reason": "Mistral's model pages say \"1M\" (https://docs.mistral.ai/models.md), and `/v1/models` reports the exact window at runtime."
     },
     {
+      "provider": "mistral",
+      "model": "mistral-large-4-0-8",
+      "field": "unlisted",
+      "catalog": "2026-10-06",
+      "reason": "Not a Mistral model ID: Mistral names only mistral-large-4 and mistral-large-4-0 (https://docs.mistral.ai/models/mistral-large-4-0.md, https://docs.mistral.ai/models.md), and both resolve to the mistral-large-4 entry."
+    },
+    {
       "provider": "zai",
       "model": "glm-5",
       "field": "context",

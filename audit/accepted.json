@@ -407,6 +407,13 @@
       "reason": "GitHub publishes no output limit (https://docs.github.com/en/copilot/reference/ai-models/supported-models); Copilot's `/models` replaces it at runtime."
     },
     {
+      "provider": "copilot",
+      "model": "grok-4.5",
+      "field": "unlisted",
+      "catalog": "2026-07-08",
+      "reason": "Deprecated on 2026-10-19 in most Copilot experiences, with Grok 4.7 as the suggested alternative (https://github.blog/changelog/2026-10-19-github-copilot-models-deprecated-on-october-19-2026/). Copilot's live listing still covers it wherever it is served."
+    },
+    {
       "provider": "google",
       "model": "gemini-4-argon",
       "field": "max_output",

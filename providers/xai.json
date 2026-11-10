@@ -155,11 +155,12 @@
             "none",
             "low",
             "medium",
-            "high"
+            "high",
+            "xhigh"
           ]
         }
       ],
-      "note": "Once a prompt reaches this many tokens, xAI bills every token of the\nrequest at the long-context rate. A tier's `above` is exclusive, so the\ntiers sit one token below it."
+      "note": "Once a prompt reaches this many tokens, xAI bills every token of the\nrequest at the long-context rate. A tier's `above` is exclusive, so the\ntiers sit one token below it.\n\nGrok 4.3 takes `reasoning_effort` none, low, medium, high and xhigh, with low\nthe default (https://docs.x.ai/developers/models/grok-4.3). Not verified live."
     }
   ]
 }

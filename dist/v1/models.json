@@ -1,8 +1,8 @@
 {
   "$schema": "schema.json",
   "format": 1,
-  "updated_at": "2026-11-10T11:07:59.109757681Z",
-  "content_sha256": "480131fcb7290ca0b96eee947fa3e53830bf2abb1c35326cb957dca6e2d0ec71",
+  "updated_at": "2026-11-10T11:08:49.335541216Z",
+  "content_sha256": "ecd30d2e8d10078dd57c6394b66158f7773bdaf8852c01d744775e0867c96e1a",
   "providers": [
     {
       "slug": "anthropic",
@@ -4361,11 +4361,12 @@
                 "none",
                 "low",
                 "medium",
-                "high"
+                "high",
+                "xhigh"
               ]
             }
           ],
-          "note": "Once a prompt reaches this many tokens, xAI bills every token of the\nrequest at the long-context rate. A tier's `above` is exclusive, so the\ntiers sit one token below it."
+          "note": "Once a prompt reaches this many tokens, xAI bills every token of the\nrequest at the long-context rate. A tier's `above` is exclusive, so the\ntiers sit one token below it.\n\nGrok 4.3 takes `reasoning_effort` none, low, medium, high and xhigh, with low\nthe default (https://docs.x.ai/developers/models/grok-4.3). Not verified live."
         }
       ]
     },

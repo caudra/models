@@ -1,8 +1,8 @@
 {
   "$schema": "schema.json",
   "format": 1,
-  "updated_at": "2026-10-30T15:50:57.217566419Z",
-  "content_sha256": "16c45ae42edc2e38a3b8dd1932bc7bde386058616de0b0317a1280a10e50aa0c",
+  "updated_at": "2026-11-10T10:50:47.009182771Z",
+  "content_sha256": "c04fdef7a84f6b3b33a8443f009f64dac842713d37fb80a9d1bb852701154494",
   "providers": [
     {
       "slug": "anthropic",
@@ -414,6 +414,44 @@
             }
           ],
           "note": "Long-context models accept 1M tokens natively, with no beta header. This is\nthe working window we run them at, capped well below that ceiling to bound\ncost and latency, and aligned with `WIDE_PLAN_CONTEXT_WINDOW`. Unlike the\n200k entries, it is an *input* budget: `max_output_tokens` is granted on top\nof it rather than carved out of it.\n\nLevels these models declare, matching the models.dev catalog. Claude reasons\nunconditionally unless it declares a toggle, and no Claude model has ever\naccepted `minimal`, so the canonical fallback ladder would offer a level the\nAPI rejects."
+        },
+        {
+          "prefixes": [
+            "claude-fable-5-2"
+          ],
+          "small": false,
+          "default": false,
+          "vision": true,
+          "family": "claude",
+          "pricing": {
+            "input": 8.0,
+            "output": 40.0,
+            "cache_write": 10.0,
+            "cache_read": 0.2,
+            "fast": {
+              "input": 16.0,
+              "output": 80.0,
+              "cache_write": 20.0,
+              "cache_read": 0.4
+            }
+          },
+          "max_output_tokens": 128000,
+          "context_window": 372000,
+          "window_excludes_output": true,
+          "reasoning_options": [
+            {
+              "type": "effort",
+              "values": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            }
+          ],
+          "note": "Fable 5.2 lists at $8/$40, below Fable 5.1, with cache reads at 0.025x\ninput ($0.20). Fast mode is $16/$80 on the Claude API, and the caching\nmultipliers apply on top of it. Fable 5.2 takes the same 1M window, 128k\noutput and always-on adaptive thinking with five effort levels as Fable 5.1\n(default high), per the models overview and the Fable 5.2 migration guide.\n\nIt enforces the preserved-thinking prefix check for every account. Caudra\nalready sends `prefix_mismatch_behavior: drop_block` with the binding beta\nheader for adaptive thinking, which the migration guide accepts.\n\nLong-context models accept 1M tokens natively, with no beta header. This is\nthe working window we run them at, capped well below that ceiling to bound\ncost and latency, and aligned with `WIDE_PLAN_CONTEXT_WINDOW`. Unlike the\n200k entries, it is an *input* budget: `max_output_tokens` is granted on top\nof it rather than carved out of it.",
+          "source": "https://platform.claude.com/docs/en/about-claude/pricing"
         },
         {
           "prefixes": [

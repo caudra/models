@@ -476,16 +476,40 @@
   ],
   "routing": [
     {
-      "provider": "groq",
-      "field": "env",
-      "catalog": "GROQ_API_KEY",
-      "reason": "Caudra sends @ai-sdk/groq rows to its built-in Groq endpoint, https://api.groq.com/openai/v1, with GROQ_API_KEY (console.groq.com/docs/openai)."
+      "provider": "hopper",
+      "field": "api",
+      "catalog": "https://api.withhopper.com/v1",
+      "reason": "Hopper serves an OpenAI-compatible API at https://api.withhopper.com/v1 and its quickstart exports the key as HOPPER_API_KEY (https://docs.withhopper.com/)."
     },
     {
-      "provider": "groq",
+      "provider": "hopper",
+      "field": "env",
+      "catalog": "HOPPER_API_KEY",
+      "reason": "Hopper serves an OpenAI-compatible API at https://api.withhopper.com/v1 and its quickstart exports the key as HOPPER_API_KEY (https://docs.withhopper.com/)."
+    },
+    {
+      "provider": "hopper",
       "field": "npm",
-      "catalog": "@ai-sdk/groq",
-      "reason": "Caudra sends @ai-sdk/groq rows to its built-in Groq endpoint, https://api.groq.com/openai/v1, with GROQ_API_KEY (console.groq.com/docs/openai)."
+      "catalog": "@ai-sdk/openai-compatible",
+      "reason": "Hopper serves an OpenAI-compatible API at https://api.withhopper.com/v1 and its quickstart exports the key as HOPPER_API_KEY (https://docs.withhopper.com/)."
+    },
+    {
+      "provider": "wally",
+      "field": "api",
+      "catalog": "https://inference.runanywhere.ai/v1",
+      "reason": "RunAnywhere serves Wally through an OpenAI-compatible API at https://inference.runanywhere.ai/v1 with a bearer Cloud key (https://docs.runanywhere.ai/wally-cloud/api). WALLY_API_KEY only names the variable Caudra reads the key from."
+    },
+    {
+      "provider": "wally",
+      "field": "env",
+      "catalog": "WALLY_API_KEY",
+      "reason": "RunAnywhere serves Wally through an OpenAI-compatible API at https://inference.runanywhere.ai/v1 with a bearer Cloud key (https://docs.runanywhere.ai/wally-cloud/api). WALLY_API_KEY only names the variable Caudra reads the key from."
+    },
+    {
+      "provider": "wally",
+      "field": "npm",
+      "catalog": "@ai-sdk/openai-compatible",
+      "reason": "RunAnywhere serves Wally through an OpenAI-compatible API at https://inference.runanywhere.ai/v1 with a bearer Cloud key (https://docs.runanywhere.ai/wally-cloud/api). WALLY_API_KEY only names the variable Caudra reads the key from."
     }
   ]
 }

@@ -663,6 +663,37 @@
     },
     {
       "prefixes": [
+        "claude-fable-5.2"
+      ],
+      "small": false,
+      "default": false,
+      "vision": true,
+      "family": "generic",
+      "pricing": {
+        "input": 8.0,
+        "output": 40.0,
+        "cache_write": 10.0,
+        "cache_read": 0.2
+      },
+      "max_output_tokens": 100000,
+      "context_window": 200000,
+      "reasoning_options": [
+        {
+          "type": "effort",
+          "values": [
+            "low",
+            "medium",
+            "high",
+            "xhigh",
+            "max"
+          ]
+        }
+      ],
+      "source": "https://github.blog/changelog/2026-11-09-claude-fable-5-2-in-github-copilot",
+      "note": "Copilot bills Fable 5.2 at Anthropic's list price under usage-based\nbilling. Without its own entry, `claude-fable-5.2` would fall to the\n`claude-fable-5` prefix and price at Fable 5 rates. The limits mirror\nFable 5.1 until the live listing overrides them.\n\nClaude on Copilot and gpt-6.1-sol reason unconditionally: no `none`, no\ntoggle."
+    },
+    {
+      "prefixes": [
         "claude-fable-5.1"
       ],
       "small": false,

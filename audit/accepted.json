@@ -352,17 +352,17 @@
     },
     {
       "provider": "mistral",
-      "model": "glm-5-2",
+      "model": "deepseek-v4-1-flash-1017",
       "field": "context",
       "catalog": "1048576",
       "reason": "Mistral's model pages say \"1M\" (https://docs.mistral.ai/models.md), and `/v1/models` reports the exact window at runtime."
     },
     {
       "provider": "mistral",
-      "model": "deepseek-v4-1-flash-1017",
-      "field": "context",
-      "catalog": "1048576",
-      "reason": "Mistral's model pages say \"1M\" (https://docs.mistral.ai/models.md), and `/v1/models` reports the exact window at runtime."
+      "model": "mistral-large-4-0-8",
+      "field": "unlisted",
+      "catalog": "2026-10-06",
+      "reason": "Not a Mistral model ID: Mistral names only mistral-large-4 and mistral-large-4-0 (https://docs.mistral.ai/models/mistral-large-4-0.md, https://docs.mistral.ai/models.md), and both resolve to the mistral-large-4 entry."
     },
     {
       "provider": "zai",
@@ -405,6 +405,13 @@
       "field": "max_output",
       "catalog": "32000",
       "reason": "GitHub publishes no output limit (https://docs.github.com/en/copilot/reference/ai-models/supported-models); Copilot's `/models` replaces it at runtime."
+    },
+    {
+      "provider": "copilot",
+      "model": "grok-4.5",
+      "field": "unlisted",
+      "catalog": "2026-07-08",
+      "reason": "Deprecated on 2026-10-19 in most Copilot experiences, with Grok 4.7 as the suggested alternative (https://github.blog/changelog/2026-10-19-github-copilot-models-deprecated-on-october-19-2026/). Copilot's live listing still covers it wherever it is served."
     },
     {
       "provider": "google",
@@ -476,16 +483,40 @@
   ],
   "routing": [
     {
-      "provider": "groq",
-      "field": "env",
-      "catalog": "GROQ_API_KEY",
-      "reason": "Caudra sends @ai-sdk/groq rows to its built-in Groq endpoint, https://api.groq.com/openai/v1, with GROQ_API_KEY (console.groq.com/docs/openai)."
+      "provider": "hopper",
+      "field": "api",
+      "catalog": "https://api.withhopper.com/v1",
+      "reason": "Hopper serves an OpenAI-compatible API at https://api.withhopper.com/v1 and its quickstart exports the key as HOPPER_API_KEY (https://docs.withhopper.com/)."
     },
     {
-      "provider": "groq",
+      "provider": "hopper",
+      "field": "env",
+      "catalog": "HOPPER_API_KEY",
+      "reason": "Hopper serves an OpenAI-compatible API at https://api.withhopper.com/v1 and its quickstart exports the key as HOPPER_API_KEY (https://docs.withhopper.com/)."
+    },
+    {
+      "provider": "hopper",
       "field": "npm",
-      "catalog": "@ai-sdk/groq",
-      "reason": "Caudra sends @ai-sdk/groq rows to its built-in Groq endpoint, https://api.groq.com/openai/v1, with GROQ_API_KEY (console.groq.com/docs/openai)."
+      "catalog": "@ai-sdk/openai-compatible",
+      "reason": "Hopper serves an OpenAI-compatible API at https://api.withhopper.com/v1 and its quickstart exports the key as HOPPER_API_KEY (https://docs.withhopper.com/)."
+    },
+    {
+      "provider": "wally",
+      "field": "api",
+      "catalog": "https://inference.runanywhere.ai/v1",
+      "reason": "RunAnywhere serves Wally through an OpenAI-compatible API at https://inference.runanywhere.ai/v1 with a bearer Cloud key (https://docs.runanywhere.ai/wally-cloud/api). WALLY_API_KEY only names the variable Caudra reads the key from."
+    },
+    {
+      "provider": "wally",
+      "field": "env",
+      "catalog": "WALLY_API_KEY",
+      "reason": "RunAnywhere serves Wally through an OpenAI-compatible API at https://inference.runanywhere.ai/v1 with a bearer Cloud key (https://docs.runanywhere.ai/wally-cloud/api). WALLY_API_KEY only names the variable Caudra reads the key from."
+    },
+    {
+      "provider": "wally",
+      "field": "npm",
+      "catalog": "@ai-sdk/openai-compatible",
+      "reason": "RunAnywhere serves Wally through an OpenAI-compatible API at https://inference.runanywhere.ai/v1 with a bearer Cloud key (https://docs.runanywhere.ai/wally-cloud/api). WALLY_API_KEY only names the variable Caudra reads the key from."
     }
   ]
 }

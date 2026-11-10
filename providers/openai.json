@@ -446,7 +446,7 @@
           ]
         }
       ],
-      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nWorking window for the long-context OpenAI models, gpt-5.6 and gpt-6.\nDeliberately below what the API accepts — gpt-6 advertises 1,050,000 —\nbecause the window is what caudra fills before compacting, and cost and\nlatency scale with it.\n\nLevels these models declare, matching the models.dev catalog. Kept in the\ntable so a cold catalog still resolves an effort correctly, and so the Codex\nplan models the catalog has not reached resolve at all.\n\nOpenAI's promotional rate, offered through at least 2026-11-21."
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nWorking window for the long-context OpenAI models, gpt-5.6 and gpt-6.\nDeliberately below what the API accepts — gpt-6 advertises 1,050,000 —\nbecause the window is what caudra fills before compacting, and cost and\nlatency scale with it.\n\nLevels these models declare, matching the models.dev catalog. Kept in the\ntable so a cold catalog still resolves an effort correctly, and so the Codex\nplan models the catalog has not reached resolve at all.\n\nOpenAI's promotional rate, offered until 2026-11-30\n(https://platform.openai.com/docs/pricing). OpenAI has not published the\nregular rates, so no price period is scheduled yet."
     },
     {
       "prefixes": [
@@ -490,7 +490,13 @@
         "input": 0.75,
         "output": 4.5,
         "cache_write": 0.0,
-        "cache_read": 0.075
+        "cache_read": 0.075,
+        "fast": {
+          "input": 1.5,
+          "output": 9.0,
+          "cache_write": 0.0,
+          "cache_read": 0.15
+        }
       },
       "max_output_tokens": 128000,
       "context_window": 400000,
@@ -505,7 +511,8 @@
             "xhigh"
           ]
         }
-      ]
+      ],
+      "note": "Priority processing, which fast mode requests, is listed on\nhttps://platform.openai.com/docs/pricing."
     },
     {
       "prefixes": [
@@ -519,10 +526,17 @@
         "input": 0.4,
         "output": 1.6,
         "cache_write": 0.0,
-        "cache_read": 0.1
+        "cache_read": 0.1,
+        "fast": {
+          "input": 0.7,
+          "output": 2.8,
+          "cache_write": 0.0,
+          "cache_read": 0.175
+        }
       },
       "max_output_tokens": 32768,
-      "context_window": 1047576
+      "context_window": 1047576,
+      "note": "Priority processing, which fast mode requests, is listed on\nhttps://platform.openai.com/docs/pricing."
     },
     {
       "prefixes": [
@@ -536,10 +550,17 @@
         "input": 2.0,
         "output": 8.0,
         "cache_write": 0.0,
-        "cache_read": 0.5
+        "cache_read": 0.5,
+        "fast": {
+          "input": 3.5,
+          "output": 14.0,
+          "cache_write": 0.0,
+          "cache_read": 0.875
+        }
       },
       "max_output_tokens": 32768,
-      "context_window": 1047576
+      "context_window": 1047576,
+      "note": "Priority processing, which fast mode requests, is listed on\nhttps://platform.openai.com/docs/pricing."
     },
     {
       "prefixes": [
@@ -671,6 +692,12 @@
         "output": 15.0,
         "cache_write": 0.0,
         "cache_read": 0.25,
+        "fast": {
+          "input": 5.0,
+          "output": 30.0,
+          "cache_write": 0.0,
+          "cache_read": 0.5
+        },
         "tiers": [
           {
             "above": 272000,
@@ -695,7 +722,7 @@
           ]
         }
       ],
-      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate."
+      "note": "A request whose prompt runs past this many tokens bills in full at twice\nthe input and cache rates and one and a half times the output rate. The\nwide window sits above it, so the last stretch before compaction always\npays the long rate.\n\nPriority processing, which fast mode requests, is listed on\nhttps://platform.openai.com/docs/pricing."
     },
     {
       "prefixes": [
@@ -739,7 +766,13 @@
         "input": 2.0,
         "output": 8.0,
         "cache_write": 0.0,
-        "cache_read": 0.5
+        "cache_read": 0.5,
+        "fast": {
+          "input": 3.5,
+          "output": 14.0,
+          "cache_write": 0.0,
+          "cache_read": 0.875
+        }
       },
       "max_output_tokens": 100000,
       "context_window": 200000,
@@ -753,7 +786,7 @@
           ]
         }
       ],
-      "note": "The o-series predates the explicit opt-out, so it always reasons."
+      "note": "The o-series predates the explicit opt-out, so it always reasons.\n\nPriority processing, which fast mode requests, is listed on\nhttps://platform.openai.com/docs/pricing."
     },
     {
       "prefixes": [
@@ -767,7 +800,13 @@
         "input": 1.75,
         "output": 14.0,
         "cache_write": 0.0,
-        "cache_read": 0.175
+        "cache_read": 0.175,
+        "fast": {
+          "input": 3.5,
+          "output": 28.0,
+          "cache_write": 0.0,
+          "cache_read": 0.35
+        }
       },
       "max_output_tokens": 128000,
       "context_window": 400000,
@@ -782,7 +821,8 @@
             "xhigh"
           ]
         }
-      ]
+      ],
+      "note": "Priority processing, which fast mode requests, is listed on\nhttps://platform.openai.com/docs/pricing."
     },
     {
       "prefixes": [
@@ -826,7 +866,13 @@
         "input": 1.75,
         "output": 14.0,
         "cache_write": 0.0,
-        "cache_read": 0.175
+        "cache_read": 0.175,
+        "fast": {
+          "input": 3.5,
+          "output": 28.0,
+          "cache_write": 0.0,
+          "cache_read": 0.35
+        }
       },
       "max_output_tokens": 128000,
       "context_window": 400000,
@@ -841,7 +887,8 @@
             "xhigh"
           ]
         }
-      ]
+      ],
+      "note": "Priority processing, which fast mode requests, is listed on\nhttps://platform.openai.com/docs/pricing."
     }
   ],
   "availability": [
@@ -876,6 +923,22 @@
       },
       "note": "Shutdowns from <https://developers.openai.com/api/docs/deprecations>.",
       "source": "https://developers.openai.com/api/docs/deprecations"
+    },
+    {
+      "prefix": "gpt-4.1",
+      "during": {
+        "until": "2027-01-14"
+      },
+      "note": "Shutdowns from <https://platform.openai.com/docs/deprecations>, announced\n2026-10-14 with gpt-6-luna as the replacement.",
+      "source": "https://platform.openai.com/docs/deprecations"
+    },
+    {
+      "prefix": "gpt-4.1-mini",
+      "during": {
+        "until": "2027-01-14"
+      },
+      "note": "Shutdowns from <https://platform.openai.com/docs/deprecations>, announced\n2026-10-14 with gpt-6-luna as the replacement.",
+      "source": "https://platform.openai.com/docs/deprecations"
     }
   ]
 }
